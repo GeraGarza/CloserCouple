@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import edu.utap.closercouple.R
-import kotlinx.android.synthetic.main.dates_fragment.*
+import kotlinx.android.synthetic.main.fragment_dates.*
 
 class DateFragment: Fragment()  {
 
@@ -25,7 +25,7 @@ class DateFragment: Fragment()  {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        tv_text.text = getArguments()?.getString("NAME") ;
+        tv_text.text = arguments?.getString("NAME") ;
     }
 
         //https://stackoverflow.com/questions/10450348/do-fragments-really-need-an-empty-constructor
@@ -34,7 +34,7 @@ class DateFragment: Fragment()  {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.dates_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_dates, container, false)
     }
 
 }

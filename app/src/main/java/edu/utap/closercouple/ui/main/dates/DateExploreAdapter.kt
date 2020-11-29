@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import edu.utap.closercouple.Data
 import edu.utap.closercouple.R
 
 
@@ -36,21 +37,23 @@ class DateExploreAdapter(private val viewModel: MainViewModel) :
 
         }
 
-        fun bind(item: String) {
-            title.text = item
+        fun bind(item:  Data?) {
+            if(item == null)return
+            title.text = item.name
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.row_date, parent, false)
+            .inflate(R.layout.util_row_date, parent, false)
         return VH(itemView)
     }
 
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(viewModel.getListAt(holder.adapterPosition))
     }
 
+    override fun getItemCount() = viewModel.getItemCount()
 
 }
