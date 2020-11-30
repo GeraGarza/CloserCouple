@@ -4,209 +4,363 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_text"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:textSize="30sp"
-        android:gravity="center"
-        />
-
-
-    <LinearLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_profile_icons"
-            android:layout_marginEnd="@dimen/space_profile_icons"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/icon_button_border"
-                    android:maxWidth="@dimen/profile_icon"
-                    android:maxHeight="@dimen/profile_icon"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_profle_user_grey"
-                    android:layout_gravity="center_horizontal"
-
-                    />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:maxWidth="@dimen/profile_icon"
-                    android:maxHeight="@dimen/profile_icon"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_profle_grey"
-                    android:layout_gravity="center_horizontal"
-
-                    />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Account"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_profile_icons"
-            android:layout_marginEnd="@dimen/space_profile_icons"
-            android:layout_weight="1"
             android:orientation="vertical"
+
             >
 
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                android:paddingBottom="4dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_profile_icons"
+                    android:layout_marginEnd="@dimen/space_profile_icons"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:background="@drawable/icon_button_border"
+                            android:maxWidth="@dimen/profile_icon"
+                            android:maxHeight="@dimen/profile_icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_profle_user_grey"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:maxWidth="@dimen/profile_icon"
+                            android:maxHeight="@dimen/profile_icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_profle_grey"
+
+                            />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Account"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_profile_icons"
+                    android:layout_marginEnd="@dimen/space_profile_icons"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:background="@drawable/icon_button_border"
+                            android:maxWidth="@dimen/profile_icon"
+                            android:maxHeight="@dimen/profile_icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_profle_calendar_grey"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:maxWidth="@dimen/profile_icon"
+                            android:maxHeight="@dimen/profile_icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_profle_grey" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Availability"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_profile_icons"
+                    android:layout_marginEnd="@dimen/space_profile_icons"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:background="@drawable/icon_button_border"
+                            android:maxWidth="@dimen/profile_icon"
+                            android:maxHeight="@dimen/profile_icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_profle_brush_grey"
+
+                            />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:maxWidth="@dimen/profile_icon"
+                            android:maxHeight="@dimen/profile_icon"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/icon_profle_grey"
+
+                            />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Select\nInterests"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/account_row_font_size"
+                android:paddingBottom="@dimen/account_row_font_size"
                 >
 
-                <ImageButton
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/icon_button_border"
-                    android:maxWidth="@dimen/profile_icon"
-                    android:maxHeight="@dimen/profile_icon"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_profle_calendar_grey"
-                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:text="Connect with your partner!"
+                    android:textAlignment="center"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
 
                     />
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:maxWidth="@dimen/profile_icon"
-                    android:maxHeight="@dimen/profile_icon"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_profle_grey"
-                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:padding="1dp"
+                    android:text="The delagate will be chosen at random"
+                    android:textAlignment="center"
+                    android:textSize="14dp"
+
                     />
 
-            </FrameLayout>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Availability"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"/>
-        </LinearLayout>
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/space_profile_icons"
-            android:layout_marginEnd="@dimen/space_profile_icons"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/icon_button_border"
-                    android:maxWidth="@dimen/profile_icon"
-                    android:maxHeight="@dimen/profile_icon"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_profle_brush_grey"
-                    android:layout_gravity="center_horizontal"
-
+                    android:background="@color/blue_active"
+                    android:padding="12dp"
+                    android:text="Connect Partner"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/account_row_font_size"
                     />
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:maxWidth="@dimen/profile_icon"
-                    android:maxHeight="@dimen/profile_icon"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_profle_grey"
-                    android:layout_gravity="center_horizontal"
-
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Edit Profile"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
                     />
 
-            </FrameLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Select\nInterests"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+                    android:padding="8dp"
+                    android:text="About CloserCouple"
+                    android:textColor="@color/light_grey_text"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Edit Profile"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/account_border"
+                    android:padding="12dp"
+                    android:text="Manage Dates"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/light_grey"
+
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:paddingBottom="20dp"
+                    android:text="v 1.0"
+                    android:textColor="@color/light_grey_text"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+
+                <!--  Bottom Background               -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/light_grey"
+                    />
+
+
+
+            </LinearLayout>
+
+
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Connect with your partner!"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="18dp"
-            android:padding="1dp"
-
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="The delagate will be chosen at random"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textSize="14dp"
-            android:padding="1dp"
-
-            />
-
-    </LinearLayout>
-
-
-
-
+    </ScrollView>
 
 
 </LinearLayout>

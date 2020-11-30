@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 
 class MemoriesFragment  : Fragment() {
@@ -49,6 +50,7 @@ class MemoriesFragment  : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.main_rv, container, false)
+        (activity as MainActivity).supportActionBar?.show();
         initRecyclerView(view)
         return view
     }

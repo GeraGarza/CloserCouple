@@ -6,7 +6,7 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import edu.utap.closercouple.ui.main.dates.DateFragment
+import edu.utap.closercouple.ui.main.dates.Date.DateFragment
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
 import edu.utap.closercouple.ui.main.dates.Memories.MemoriesFragment

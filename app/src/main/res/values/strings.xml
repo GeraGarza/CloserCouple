@@ -2,4 +2,8 @@
     <string name="app_name">CloserCouple</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="dates">Dates</string>
+    <string name="explore">Explore</string>
+    <string name="memories">Memories</string>
+    <string name="account">Account</string>
 </resources>

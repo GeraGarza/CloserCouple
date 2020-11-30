@@ -11,6 +11,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="active_icon">#FF494E</color>
+    <color name="background_app">#FF494E</color>
     <color name="active_back_icon">#BE0000</color>
     <color name="de_activate_red">#932C2C</color>
     <color name="de_active_icon">#bfbfbf</color>
@@ -19,6 +20,10 @@
     <color name="blue_active">#0096FA</color>
     <color name="blue_active_click">#0070FA</color>
     <color name="light_blue_active">#C2FFFF</color>
+    <color name="light_blue_background">#E4F6FB</color>
+    <color name="light_grey">#EBEBEB</color>
+    <color name="light_grey_text">#AEAEAE</color>
+    <color name="white_text">#FCFCFC</color>
 
 
 
