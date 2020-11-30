@@ -28,6 +28,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
+        app:itemIconSize="@dimen/_40dp"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +37,9 @@
         app:layout_constraintTop_toBottomOf="@+id/main_frame"
         app:menu="@menu/bottom_nav_menu"
         android:layout_gravity="bottom"
-
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
         />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

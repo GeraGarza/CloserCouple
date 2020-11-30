@@ -10,4 +10,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="active_icon">#FF494E</color>
+    <color name="active_back_icon">#BE0000</color>
+    <color name="de_active_icon">#bfbfbf</color>
+    <color name="de_active_back_icon">#979A96</color>
+
+
 </resources>

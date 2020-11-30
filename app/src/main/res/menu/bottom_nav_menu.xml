@@ -7,26 +7,27 @@
 
     <item
         android:id="@+id/navigation_dates"
-        android:icon="@drawable/ic_launcher_foreground"
-        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@drawable/ic_date_tab_selctor"
+
         android:title="Dates" />
 
     <item
         android:id="@+id/navigation_explore"
-        android:icon="@drawable/ic_launcher_foreground"
-        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_explore_tab_selctor"
         android:title="Explore" />
 
     <item
         android:id="@+id/navigation_memories"
-        android:icon="@drawable/ic_launcher_foreground"
-        app:showAsAction="ifRoom"
-        android:title="Memories" />
+        android:icon="@drawable/ic_memories_tab_selector"
+        android:title="Memories"
+        android:color="@color/active_icon"
+        />
 
     <item
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@drawable/ic_account_tab_selector"
         android:id="@+id/navigation_account"
-        app:showAsAction="ifRoom"
+
         android:title="Account"
         />
 

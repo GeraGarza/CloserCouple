@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.utap.closercouple.ui.main.dates.DateFragment
 import edu.utap.closercouple.ui.main.dates.ExploreFragment
+import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +23,9 @@ class MainActivity : AppCompatActivity() {
             layoutInflater.inflate(R.layout.util_action_bar, null)
         // Apply the custom view
         actionBar.customView = customView
+        nav_view.itemIconTintList = null;
+
+
     }
 
 
