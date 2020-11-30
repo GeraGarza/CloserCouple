@@ -7,7 +7,9 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.utap.closercouple.ui.main.dates.DateFragment
-import edu.utap.closercouple.ui.main.dates.ExploreFragment
+import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
+import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
+import edu.utap.closercouple.ui.main.dates.Memories.MemoriesFragment
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
@@ -58,13 +60,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_memories -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.main_frame, DateFragment.newInstance("Memories"))
+                        .replace(R.id.main_frame, MemoriesFragment.newInstance("Memories"))
                         .commit()
                 }
                 R.id.navigation_account -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.main_frame, DateFragment.newInstance("Account"))
+                        .replace(R.id.main_frame, AccountFragment.newInstance("Account"))
                         .commit()
                 }
             }

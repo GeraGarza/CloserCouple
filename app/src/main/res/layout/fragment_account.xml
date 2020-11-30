@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account"
+        android:textSize="30sp"
+        android:gravity="center"
+        />
+
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_profile_icons"
+            android:layout_marginEnd="@dimen/space_profile_icons"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/icon_button_border"
+                    android:maxWidth="@dimen/profile_icon"
+                    android:maxHeight="@dimen/profile_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_profle_user_grey"
+                    android:layout_gravity="center_horizontal"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="@dimen/profile_icon"
+                    android:maxHeight="@dimen/profile_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_profle_grey"
+                    android:layout_gravity="center_horizontal"
+
+                    />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Account"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_profile_icons"
+            android:layout_marginEnd="@dimen/space_profile_icons"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                >
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/icon_button_border"
+                    android:maxWidth="@dimen/profile_icon"
+                    android:maxHeight="@dimen/profile_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_profle_calendar_grey"
+                    android:layout_gravity="center_horizontal"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="@dimen/profile_icon"
+                    android:maxHeight="@dimen/profile_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_profle_grey"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Availability"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_profile_icons"
+            android:layout_marginEnd="@dimen/space_profile_icons"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/icon_button_border"
+                    android:maxWidth="@dimen/profile_icon"
+                    android:maxHeight="@dimen/profile_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_profle_brush_grey"
+                    android:layout_gravity="center_horizontal"
+
+                    />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="@dimen/profile_icon"
+                    android:maxHeight="@dimen/profile_icon"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_profle_grey"
+                    android:layout_gravity="center_horizontal"
+
+                    />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Select\nInterests"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Connect with your partner!"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:padding="1dp"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The delagate will be chosen at random"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="14dp"
+            android:padding="1dp"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

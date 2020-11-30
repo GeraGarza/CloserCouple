@@ -8,24 +8,24 @@
     <item
         android:id="@+id/navigation_dates"
         android:enabled="true"
-        android:icon="@drawable/ic_date_tab_selctor"
+        android:icon="@drawable/selector_date_tab"
 
         android:title="Dates" />
 
     <item
         android:id="@+id/navigation_explore"
-        android:icon="@drawable/ic_explore_tab_selctor"
+        android:icon="@drawable/selector_explore_tab"
         android:title="Explore" />
 
     <item
         android:id="@+id/navigation_memories"
-        android:icon="@drawable/ic_memories_tab_selector"
+        android:icon="@drawable/selector_memories_tab"
         android:title="Memories"
         android:color="@color/active_icon"
         />
 
     <item
-        android:icon="@drawable/ic_account_tab_selector"
+        android:icon="@drawable/selector_account_tab"
         android:id="@+id/navigation_account"
 
         android:title="Account"

@@ -1,9 +1,8 @@
-package edu.utap.closercouple.ui.main.dates
+package edu.utap.closercouple.ui.main.dates.Explore
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,8 +11,8 @@ import edu.utap.closercouple.Data
 import edu.utap.closercouple.R
 
 
-class DateExploreAdapter(private val viewModel: MainViewModel) :
-    ListAdapter<String, DateExploreAdapter.VH>(DateDiff()) {
+class ExploreDateAdapter(private val viewModel: ExploreViewModel) :
+    ListAdapter<String, ExploreDateAdapter.VH>(DateDiff()) {
     class DateDiff : DiffUtil.ItemCallback<String>() {
 
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {

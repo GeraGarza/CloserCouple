@@ -1,4 +1,4 @@
-package edu.utap.closercouple.ui.main.dates
+package edu.utap.closercouple.ui.main.dates.Memories
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,25 +13,25 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import edu.utap.closercouple.R
 
-class ExploreFragment  : Fragment() {
-    private lateinit var adapter: DateExploreAdapter
+class MemoriesFragment  : Fragment() {
+    private lateinit var adapter: MemoriesDateAdapter
     private lateinit var rv: RecyclerView
-    private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: MemoriesViewModel by activityViewModels()
 
     companion object {
-        fun newInstance(title: String): ExploreFragment {
-            val exploreFragment = ExploreFragment()
+        fun newInstance(title: String): MemoriesFragment {
+            val memoriesFragment = MemoriesFragment()
             val b = Bundle()
             b.putString("NAME", title)
-            exploreFragment.arguments = b
-            return exploreFragment
+            memoriesFragment.arguments = b
+            return memoriesFragment
         }
     }
 
 
     private fun initRecyclerView(root: View) {
         val rv = root.findViewById<RecyclerView>(R.id.recyclerView)
-        adapter = DateExploreAdapter(viewModel)
+        adapter = MemoriesDateAdapter(viewModel)
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(context)
         val itemDecor = DividerItemDecoration(rv.context, LinearLayoutManager.VERTICAL)

@@ -1,4 +1,4 @@
-package edu.utap.closercouple.ui.main.dates
+package edu.utap.closercouple.ui.main.dates.Memories
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,10 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.utap.closercouple.Data
 import edu.utap.closercouple.Repository
+import edu.utap.closercouple.ui.main.dates.Explore.ExploreViewModel
 import kotlin.random.Random
 
-class MainViewModel : ViewModel() {
-    private val TAG: String = MainViewModel::class.java.simpleName
+class MemoriesViewModel : ViewModel() {
+    private val TAG: String = ExploreViewModel::class.java.simpleName
     private var repository = Repository()
     private var list = MutableLiveData<List<Data>>().apply {
         value = repository.fetchData()

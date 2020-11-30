@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import edu.utap.closercouple.R
-import kotlinx.android.synthetic.main.fragment_dates.*
+import kotlinx.android.synthetic.main.fragment_date.*
 
 class DateFragment: Fragment()  {
 
@@ -34,7 +34,7 @@ class DateFragment: Fragment()  {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_dates, container, false)
+        return inflater.inflate(R.layout.fragment_date, container, false)
     }
 
 }

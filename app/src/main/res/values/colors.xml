@@ -12,8 +12,14 @@
     <color name="white">#FFFFFFFF</color>
     <color name="active_icon">#FF494E</color>
     <color name="active_back_icon">#BE0000</color>
+    <color name="de_activate_red">#932C2C</color>
     <color name="de_active_icon">#bfbfbf</color>
     <color name="de_active_back_icon">#979A96</color>
+    <color name="green_go">#14D77A</color>
+    <color name="blue_active">#0096FA</color>
+    <color name="blue_active_click">#0070FA</color>
+    <color name="light_blue_active">#C2FFFF</color>
+
 
 
 </resources>
