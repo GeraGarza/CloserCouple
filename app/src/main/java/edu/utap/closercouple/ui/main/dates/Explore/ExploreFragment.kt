@@ -50,8 +50,9 @@ class ExploreFragment  : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.main_rv, container, false)
-        (activity as MainActivity).supportActionBar?.show();
         initRecyclerView(view)
+        (activity as MainActivity).supportActionBar?.show();
+
         return view
     }
 

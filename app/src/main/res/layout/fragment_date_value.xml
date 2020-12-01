@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="@drawable/date_background"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="80dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/icon_heart_time"
+                android:adjustViewBounds="true"
+                android:maxWidth="180dp"
+                android:maxHeight="180dp"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Upcoming Dates"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile Completed.\nWaiting to match."
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                />
+
+
+        </LinearLayout>
+
+</LinearLayout>

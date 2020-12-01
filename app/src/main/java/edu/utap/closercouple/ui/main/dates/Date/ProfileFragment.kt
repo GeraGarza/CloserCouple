@@ -8,19 +8,18 @@ import androidx.fragment.app.Fragment
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 
-class DateCardFragment: Fragment()  {
+class ProfileFragment: Fragment()  {
 
 
     companion object {
-        fun newInstance(title: String): DateCardFragment {
-            val dateCardFragment = DateCardFragment()
+        fun newInstance(title: String): ProfileFragment {
+            val profileFragment = ProfileFragment()
             // Notice how this process resembles Bundles in Intents
             val b = Bundle()
             b.putString("NAME", title)
-            b.putBoolean("HAS_DATE", false)
             // NB: Fragment has an arguments property
-            dateCardFragment.arguments = b
-            return dateCardFragment
+            profileFragment.arguments = b
+            return profileFragment
         }
     }
 
@@ -38,11 +37,8 @@ class DateCardFragment: Fragment()  {
     ): View {
 
 
-        val bundle = this.arguments
-        val hasDate = bundle?.getBoolean("HAS_DATE")?: false
-
-        return (if (hasDate) inflater.inflate(R.layout.fragment_date_value, container, false)
-                else inflater.inflate(R.layout.fragment_date_empty, container, false))
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        return view
     }
 
 }

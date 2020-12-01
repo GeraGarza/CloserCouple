@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import edu.utap.closercouple.ui.main.dates.Date.DateCardFragment
 import edu.utap.closercouple.ui.main.dates.Date.DateFragment
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
@@ -39,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.let{
             initActionBar(it)
         }
+
+
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener{ menuItem ->

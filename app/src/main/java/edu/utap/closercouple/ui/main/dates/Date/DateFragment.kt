@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
+import kotlinx.android.synthetic.main.fragment_date.*
 
 class DateFragment: Fragment()  {
 
@@ -25,14 +27,13 @@ class DateFragment: Fragment()  {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //tv_text.text = arguments?.getString("NAME") ;
-        (activity as MainActivity).supportActionBar?.hide();
 
-        childFragmentManager
-            .beginTransaction()
-            .add(R.id.date_frame, DateCardFragment.newInstance("Card"))
-            .commit()
-        
+        account_create_btn.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_frame, ProfileFragment.newInstance("Explore"))
+                .commit()
+        }
     }
 
         //https://stackoverflow.com/questions/10450348/do-fragments-really-need-an-empty-constructor
@@ -42,8 +43,11 @@ class DateFragment: Fragment()  {
         savedInstanceState: Bundle?
     ): View {
 
-
-        return inflater.inflate(R.layout.fragment_date, container, false)
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.date_frame, DateCardFragment.newInstance("Card"))
+                .commit()
+            return inflater.inflate(R.layout.fragment_date, container, false)
     }
 
 }

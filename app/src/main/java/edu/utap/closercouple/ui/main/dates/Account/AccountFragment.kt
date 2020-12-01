@@ -35,7 +35,6 @@ class AccountFragment  : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_account, container, false)
 
-        (activity as MainActivity).supportActionBar?.show();
 
         return view
     }
