@@ -4,17 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/active_icon"
+    >
 
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/fragment_background"
+
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@android:color/transparent"
 
             >
 
@@ -54,7 +60,7 @@
 
                         <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_horizontal"
                             android:adjustViewBounds="true"
                             android:maxWidth="@dimen/profile_icon"
@@ -192,6 +198,7 @@
                     android:textAlignment="center"
                     android:textSize="18dp"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
 
                     />
 
@@ -203,6 +210,7 @@
                     android:text="The delagate will be chosen at random"
                     android:textAlignment="center"
                     android:textSize="14dp"
+                    android:textColor="@color/black"
 
                     />
 
@@ -348,14 +356,6 @@
                     android:textColor="@color/light_grey_text"
                     android:textSize="@dimen/account_row_font_size"
                     />
-
-                <!--  Bottom Background               -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@color/light_grey"
-                    />
-
 
 
             </LinearLayout>

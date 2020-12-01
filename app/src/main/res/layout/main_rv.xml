@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
+    android:background="@color/active_icon"
+
     >
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -15,6 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/fragment_background"
+        android:padding="4dp"
         >
 
         <androidx.recyclerview.widget.RecyclerView

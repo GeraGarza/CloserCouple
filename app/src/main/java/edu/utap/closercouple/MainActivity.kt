@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_dates -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .add(R.id.main_frame, DateFragment.newInstance("Date"))
+                        .replace(R.id.main_frame, DateFragment.newInstance("Date"))
                         .commit()
                 }
                 R.id.navigation_explore -> {

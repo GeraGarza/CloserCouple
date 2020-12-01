@@ -10,6 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
+import edu.utap.closercouple.ui.main.dates.Explore.InterestFragment
 import kotlinx.android.synthetic.main.fragment_date.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
@@ -29,20 +30,27 @@ class DateFragment: Fragment()  {
         }
     }
 
+    fun accountIconClicked(frag: Fragment){
+        val navView = activity?.findViewById<BottomNavigationView>(R.id.bottom_nav)
+        navView?.selectedItemId = R.id.navigation_account;
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.main_frame, frag)
+            .addToBackStack(null)
+            .commit()
+    }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         date_account_btn.setOnClickListener {
-
-            val navView = activity?.findViewById<BottomNavigationView>(R.id.bottom_nav)
-            navView?.selectedItemId = R.id.navigation_account;
-            requireActivity().supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_frame, ProfileFragment.newInstance("Profile"))
-                .addToBackStack(null)
-                .commit()
+            accountIconClicked(ProfileFragment.newInstance("Profile"))
         }
+
+        date_interest_btn.setOnClickListener {
+            accountIconClicked(InterestFragment.newInstance("Profile"))
+        }
+
     }
 
 
@@ -58,6 +66,7 @@ class DateFragment: Fragment()  {
                 .beginTransaction()
                 .replace(R.id.date_frame, DateCardFragment.newInstance("Card"))
                 .commit()
+
             val mainAct = (activity as MainActivity?)
             mainAct?.supportActionBar?.let {
                 val ab = layoutInflater.inflate(R.layout.util_action_bar, container, false)
