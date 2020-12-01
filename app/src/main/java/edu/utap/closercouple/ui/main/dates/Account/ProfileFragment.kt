@@ -1,4 +1,4 @@
-package edu.utap.closercouple.ui.main.dates.Date
+package edu.utap.closercouple.ui.main.dates.Account
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.util_action_bar_icon.*
+import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
 
 
 class ProfileFragment: Fragment()  {
@@ -46,16 +49,20 @@ class ProfileFragment: Fragment()  {
 
 
         val mainAct = (activity as MainActivity?)
-        mainAct?.supportActionBar?.let { mainAct.initActionBar(it, true)}
+        mainAct?.supportActionBar?.let {
+            val ab = layoutInflater.inflate(R.layout.util_action_bar_icon, container, false)
+            mainAct.initActionBar(ab, true)
+            ab.actionTitle.text =  arguments?.getString("NAME")
+        }
 
 
         val toolbar = mainAct?.findViewById(R.id.toolbar) as Toolbar
+        val fm = requireActivity().supportFragmentManager
         toolbar.setNavigationOnClickListener {
-            if (requireActivity().supportFragmentManager.backStackEntryCount > 0) {
-                requireActivity().supportFragmentManager.popBackStackImmediate()
-                mainAct.supportActionBar?.let { mainAct.initActionBar(it, false) }
+            if (fm.backStackEntryCount > 0) {
+                fm.fragments.last().onResume()
+                fm.popBackStackImmediate()
             }
-
         }
 
 

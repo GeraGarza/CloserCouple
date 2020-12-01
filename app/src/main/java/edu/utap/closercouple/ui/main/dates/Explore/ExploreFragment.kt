@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import kotlinx.android.synthetic.main.util_action_bar.view.*
+import kotlinx.android.synthetic.main.util_action_bar_icon.*
 
 class ExploreFragment  : Fragment() {
     private lateinit var adapter: ExploreDateAdapter
@@ -52,7 +54,13 @@ class ExploreFragment  : Fragment() {
         val view = inflater.inflate(R.layout.main_rv, container, false)
         initRecyclerView(view)
         val mainAct = (activity as MainActivity?)
-        mainAct?.supportActionBar?.let { mainAct.initActionBar(it, false) }
+        mainAct?.supportActionBar?.let {
+            mainAct.supportActionBar?.let {
+                val ab = layoutInflater.inflate(R.layout.util_action_bar, container, false)
+                mainAct.initActionBar(ab, false)
+                ab.actionTitle.text =  arguments?.getString("NAME")
+            }
+        }
         return view
     }
 

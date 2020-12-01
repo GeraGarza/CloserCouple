@@ -1,4 +1,4 @@
-package edu.utap.closercouple.ui.main.dates.Memories
+package edu.utap.closercouple.ui.main.dates.Explore
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,36 +10,35 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.main.dates.Account.InterestAdapter
+import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
 import kotlinx.android.synthetic.main.util_action_bar.view.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.*
 
-class MemoriesFragment  : Fragment() {
-    private lateinit var adapter: MemoriesDateAdapter
+class InterestFragment  : Fragment() {
+    private lateinit var adapter: InterestAdapter
     private lateinit var rv: RecyclerView
-    private val viewModel: MemoriesViewModel by activityViewModels()
 
     companion object {
-        fun newInstance(title: String): MemoriesFragment {
-            val memoriesFragment = MemoriesFragment()
+        fun newInstance(title: String): InterestFragment {
+            val exploreFragment = InterestFragment()
             val b = Bundle()
             b.putString("NAME", title)
-            memoriesFragment.arguments = b
-            return memoriesFragment
+            exploreFragment.arguments = b
+            return exploreFragment
         }
     }
 
 
     private fun initRecyclerView(root: View) {
         val rv = root.findViewById<RecyclerView>(R.id.recyclerView)
-        adapter = MemoriesDateAdapter(viewModel)
+        adapter = InterestAdapter(requireContext(), InterestsList.getAll())
         rv.adapter = adapter
-        rv.layoutManager = LinearLayoutManager(context)
-        val itemDecor = DividerItemDecoration(rv.context, LinearLayoutManager.VERTICAL)
-        itemDecor.setDrawable(ContextCompat.getDrawable(rv.context, (R.drawable.divider))!!)
-        rv.addItemDecoration(itemDecor)
+        rv.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         val swipe = root.findViewById<SwipeRefreshLayout>(R.id.swipe_container)
         swipe.isEnabled = false
     }
@@ -53,7 +52,6 @@ class MemoriesFragment  : Fragment() {
 
         val view = inflater.inflate(R.layout.main_rv, container, false)
         initRecyclerView(view)
-
         val mainAct = (activity as MainActivity?)
         mainAct?.supportActionBar?.let {
             mainAct.supportActionBar?.let {

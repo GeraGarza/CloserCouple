@@ -18,29 +18,25 @@ class MainActivity : AppCompatActivity() {
 
 
     // https://stackoverflow.com/questions/24838155/set-onclick-listener-on-action-bar-title-in-android/29823008#29823008
-    fun initActionBar(actionBar: ActionBar, backButton: Boolean = false) {
+    fun initActionBar(view: View, backButton: Boolean = false) {
 
-        val view: View
-        if (backButton) {
-            view = layoutInflater.inflate(R.layout.util_action_bar_icon, null)
+        if (backButton)
             toolbar.setNavigationIcon(R.drawable.ic_back)
-        }
-        else {
-            view = layoutInflater.inflate(R.layout.util_action_bar, null)
+        else
             toolbar.navigationIcon = null
 
-        }
-
-        actionBar.setDisplayShowTitleEnabled(false)
-        actionBar.setDisplayShowCustomEnabled(true)
-        actionBar.customView = view
-
+        supportActionBar?.customView = view
     }
 
     private fun initToolbar(){
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-        supportActionBar?.let { initActionBar(it) }
+        supportActionBar?.let {
+            it.setDisplayShowTitleEnabled(false)
+            it.setDisplayShowCustomEnabled(true)
+            val view = layoutInflater.inflate(R.layout.util_action_bar, null)
+
+            initActionBar(view) }
 
     }
 
@@ -88,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.main_frame, DateFragment.newInstance("Start"))
+            .replace(R.id.main_frame, DateFragment.newInstance("Date"))
             .commit()
 
     }
