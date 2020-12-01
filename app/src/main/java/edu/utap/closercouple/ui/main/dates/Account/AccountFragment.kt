@@ -27,6 +27,7 @@ class AccountFragment  : Fragment() {
     }
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,7 +36,8 @@ class AccountFragment  : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_account, container, false)
 
-
+        val mainAct = (activity as MainActivity?)
+        mainAct?.supportActionBar?.let { mainAct.initActionBar(it, false) }
         return view
     }
 

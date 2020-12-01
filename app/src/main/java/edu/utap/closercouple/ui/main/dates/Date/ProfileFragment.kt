@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import kotlinx.android.synthetic.main.fragment_profile.*
+
 
 class ProfileFragment: Fragment()  {
 
@@ -26,7 +29,9 @@ class ProfileFragment: Fragment()  {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //tv_text.text = arguments?.getString("NAME") ;
+        profil_pic.setOnClickListener {
+
+        }
     }
 
     //https://stackoverflow.com/questions/10450348/do-fragments-really-need-an-empty-constructor
@@ -38,6 +43,22 @@ class ProfileFragment: Fragment()  {
 
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+
+        val mainAct = (activity as MainActivity?)
+        mainAct?.supportActionBar?.let { mainAct.initActionBar(it, true)}
+
+
+        val toolbar = mainAct?.findViewById(R.id.toolbar) as Toolbar
+        toolbar.setNavigationOnClickListener {
+            if (requireActivity().supportFragmentManager.backStackEntryCount > 0) {
+                requireActivity().supportFragmentManager.popBackStackImmediate()
+                mainAct.supportActionBar?.let { mainAct.initActionBar(it, false) }
+            }
+
+        }
+
+
         return view
     }
 

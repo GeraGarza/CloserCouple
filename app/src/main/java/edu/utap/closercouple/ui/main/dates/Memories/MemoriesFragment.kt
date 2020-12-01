@@ -51,6 +51,9 @@ class MemoriesFragment  : Fragment() {
 
         val view = inflater.inflate(R.layout.main_rv, container, false)
         initRecyclerView(view)
+
+        val mainAct = (activity as MainActivity?)
+        mainAct?.supportActionBar?.let { mainAct.initActionBar(it, false) }
         return view
     }
 

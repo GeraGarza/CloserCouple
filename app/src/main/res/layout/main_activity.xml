@@ -22,11 +22,14 @@
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
+
     <include layout="@layout/main_content" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         app:itemIconSize="@dimen/_40dp"
         android:layout_height="wrap_content"

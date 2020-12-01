@@ -1,12 +1,12 @@
 package edu.utap.closercouple
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import edu.utap.closercouple.ui.main.dates.Date.DateCardFragment
 import edu.utap.closercouple.ui.main.dates.Date.DateFragment
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
@@ -18,32 +18,41 @@ class MainActivity : AppCompatActivity() {
 
 
     // https://stackoverflow.com/questions/24838155/set-onclick-listener-on-action-bar-title-in-android/29823008#29823008
-    private fun initActionBar(actionBar: ActionBar) {
-        // Disable the default and enable the custom
+    fun initActionBar(actionBar: ActionBar, backButton: Boolean = false) {
+
+        val view: View
+        if (backButton) {
+            view = layoutInflater.inflate(R.layout.util_action_bar_icon, null)
+            toolbar.setNavigationIcon(R.drawable.ic_back)
+        }
+        else {
+            view = layoutInflater.inflate(R.layout.util_action_bar, null)
+            toolbar.navigationIcon = null
+
+        }
+
         actionBar.setDisplayShowTitleEnabled(false)
         actionBar.setDisplayShowCustomEnabled(true)
-        val customView: View =
-            layoutInflater.inflate(R.layout.util_action_bar, null)
-        // Apply the custom view
-        actionBar.customView = customView
-        nav_view.itemIconTintList = null;
-
+        actionBar.customView = view
 
     }
+
+    private fun initToolbar(){
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.let { initActionBar(it) }
+
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.let{
-            initActionBar(it)
-        }
+        initToolbar()
+        bottom_nav.itemIconTintList = null;
 
-
-
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navView: BottomNavigationView = findViewById(R.id.bottom_nav)
         navView.setOnNavigationItemSelectedListener{ menuItem ->
 
             menuItem.isChecked = true
@@ -51,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_dates -> {
                     supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.main_frame, DateFragment.newInstance("Date"))
+                        .add(R.id.main_frame, DateFragment.newInstance("Date"))
                         .commit()
                 }
                 R.id.navigation_explore -> {
