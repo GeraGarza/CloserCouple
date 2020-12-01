@@ -2,6 +2,7 @@ package edu.utap.closercouple.ui.main.dates.Account
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,14 +32,10 @@ class InterestAdapter(
 
     inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         // private var textView = ??????
-        var colorCard: TextView = v.findViewById(R.id.tv)
+        private var colorCard: TextView = v.findViewById(R.id.tv)
 
         init {
-            // XXX Write me. setOnClickListener, look at adapterPosition in Android docs
-            colorCard.setOnClickListener{
-                swapItem(adapterPosition)
-                notifyDataSetChanged()
-            }
+
         }
 
         fun bind(pos: Int) {
@@ -49,7 +46,10 @@ class InterestAdapter(
             else colorCard.setTextColor(Color.parseColor("#000000"))
 
             colorCard.text  = String.format("%s %1.2f ", color.name, luminance)
-            colorCard.setBackgroundColor(color.color)
+            val shape = GradientDrawable()
+            shape.cornerRadius = 30f
+            shape.setColor(color.color)
+            colorCard.background = shape
 
         }
     }
@@ -73,17 +73,6 @@ class InterestAdapter(
         holder.bind(position)
     }
 
-    fun swapItem(position: Int) {
-        if (list.size <= 1) return
-        var index = random.nextInt(list.size)
-        while (index == position) {
-            index = random.nextInt(list.size)
-        }
-        // XXX Write me (swap list item at position with the one at index)
-        val tmp = list[index]
-        list[index] = list[position]
-        list[position] = tmp
-    }
 
     // A static function for computing luminance
     companion object {

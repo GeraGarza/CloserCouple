@@ -40,6 +40,7 @@ class AccountFragment  : Fragment() {
             requireActivity().supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.main_frame, InterestFragment.newInstance("Interests"))
+                .addToBackStack(null)
                 .commit()
         }
     }
