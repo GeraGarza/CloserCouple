@@ -48,7 +48,7 @@ class DateFragment: Fragment()  {
         }
 
         date_interest_btn.setOnClickListener {
-            accountIconClicked(InterestFragment.newInstance("Profile"))
+            accountIconClicked(InterestFragment.newInstance("Interests"))
         }
 
     }

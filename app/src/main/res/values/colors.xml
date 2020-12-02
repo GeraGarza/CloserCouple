@@ -17,9 +17,9 @@
     <color name="lightgrey">#EEEEEE</color>
 
 
-
-    <color name="active_icon">#FF494E</color>
-    <color name="background_app">#FF494E</color>
+    <color name="de_ative_icon">#FF6666</color>
+    <color name="active_icon">#de1738</color>
+    <color name="background_app">#de1738</color>
     <color name="active_back_icon">#BE0000</color>
     <color name="de_activate_red">#932C2C</color>
     <color name="de_active_icon">#bfbfbf</color>

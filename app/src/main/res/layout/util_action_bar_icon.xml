@@ -4,13 +4,12 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingEnd="56dp"
-
     >
 
     <TextView
         android:id="@+id/actionTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:gravity="center"
         android:maxLines="1"
         android:textStyle="bold"
@@ -18,6 +17,25 @@
         android:textColor="@color/white_text"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Example"
+        />
+
+    <TextView
+        android:id="@+id/save_interests_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Save"
+        android:fontFamily="@font/proximanovaregular"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/save_btn_clicked"
+        android:padding="16dp"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:focusable="true"
+
         />
 
 </RelativeLayout>

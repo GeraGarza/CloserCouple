@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 import edu.utap.closercouple.R
@@ -30,28 +31,51 @@ class InterestAdapter(
         addAll(colorList.shuffled())
     }
 
-    inner class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+    inner class ViewHolder(var v: View) : RecyclerView.ViewHolder(v) {
         // private var textView = ??????
-        private var colorCard: TextView = v.findViewById(R.id.tv)
-
+        private var interestCard: TextView = v.findViewById(R.id.tv)
         init {
 
         }
 
         fun bind(pos: Int) {
-            // XXX Write me.
-            val color = list[pos]
-            val luminance = getLuminance(color.color)
-            if(luminance<0.3) colorCard.setTextColor(Color.parseColor("#FFFFFF"))
-            else colorCard.setTextColor(Color.parseColor("#000000"))
 
-            colorCard.text  = String.format("%s %1.2f ", color.name, luminance)
+            val interest = list[pos]
             val shape = GradientDrawable()
             shape.cornerRadius = 30f
-            shape.setColor(color.color)
-            colorCard.background = shape
 
-        }
+            if(interest.selected){
+                val color = ContextCompat.getColor(v.context, R.color.active_icon)
+                shape.setColor(color)
+                interestCard.setTextColor(Color.parseColor("#FFFFFF"))
+                interestCard.text = String.format("%s", interest.name)
+            }else {
+                val luminance = getLuminance(interest.color)
+                if (luminance < 0.3) interestCard.setTextColor(Color.parseColor("#FFFFFF"))
+                else interestCard.setTextColor(Color.parseColor("#000000"))
+                interestCard.text = String.format("%s %1.2f ", interest.name, luminance)
+                shape.setColor(interest.color)
+            }
+            interestCard.background = shape
+
+
+            interestCard.setOnClickListener {
+                list[pos] = InterestsList.InterestItem(interest.color,interest.name,!list[pos].selected)
+                if(list[pos].selected){
+                    val color = ContextCompat.getColor(v.context, R.color.active_icon)
+                    shape.setColor(color)
+                    interestCard.setTextColor(Color.parseColor("#FFFFFF"))
+                    interestCard.text = String.format("%s", interest.name)
+                }else {
+                    val luminance = getLuminance(interest.color)
+                    if (luminance < 0.3) interestCard.setTextColor(Color.parseColor("#FFFFFF"))
+                    else interestCard.setTextColor(Color.parseColor("#000000"))
+                    interestCard.text = String.format("%s %1.2f ", interest.name, luminance)
+                    shape.setColor(interest.color)
+                }
+            }
+
+            }
     }
 
     override fun getItemCount() = InterestsList.size()

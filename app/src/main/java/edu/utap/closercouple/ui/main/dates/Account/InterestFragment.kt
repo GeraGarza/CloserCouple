@@ -1,26 +1,26 @@
 package edu.utap.closercouple.ui.main.dates.Explore
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Account.InterestAdapter
 import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
+import kotlinx.android.synthetic.main.fragment_date.*
 import kotlinx.android.synthetic.main.util_action_bar.view.*
-import kotlinx.android.synthetic.main.util_action_bar.view.actionTitle
 import kotlinx.android.synthetic.main.util_action_bar_icon.*
-import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
+
 
 class InterestFragment  : Fragment() {
     private lateinit var adapter: InterestAdapter
@@ -47,6 +47,23 @@ class InterestFragment  : Fragment() {
     }
 
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        val textView = activity?.findViewById(R.id.save_interests_btn) as TextView
+        val fm = requireActivity().supportFragmentManager
+
+        textView.setOnClickListener {
+            println("CICKEDD")
+            if (fm.backStackEntryCount > 0) {
+                fm.fragments.last().onResume()
+                fm.popBackStackImmediate()
+            }
+        }
+
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -64,7 +81,6 @@ class InterestFragment  : Fragment() {
             mainAct.initActionBar(ab, true)
             ab.actionTitle.text =  arguments?.getString("NAME")
         }
-
 
         val toolbar = mainAct?.findViewById(R.id.toolbar) as Toolbar
         val fm = requireActivity().supportFragmentManager

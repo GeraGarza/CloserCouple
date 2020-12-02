@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:background="@color/active_icon"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="#293859" />
+        android:layout_height="240dp" />
 
     <!--Top Header Layout-->
 
@@ -36,26 +35,20 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="6dp"
-                    app:cardElevation="0dp">
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/profil_pic"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/icon_account_red"
+                        android:src="@drawable/icon_account_grey"
                         android:adjustViewBounds="true"
-                        android:maxWidth="80dp"
-                        android:maxHeight="80dp"
+                        android:maxWidth="60dp"
+                        android:maxHeight="60dp"
                         android:layout_gravity="center_horizontal"
-
+                        android:background="@android:color/transparent"
                         />
 
-                </androidx.cardview.widget.CardView>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -66,18 +59,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/proximanovaregular"
-                        android:text="Sanskar Tiwari"
+                        android:text="Jose Garza"
                         android:textColor="#424242"
                         android:textSize="21sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/proximanovaregular"
-                        android:text="Android Developer"
-                        android:textSize="14sp" />
-
 
                 </LinearLayout>
 
@@ -111,7 +96,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="97%"
+                                android:text="13"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
 
@@ -119,7 +104,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
-                                android:text="string/job_success"
+                                android:text="Total Dates"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -147,7 +132,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="4.8/5"
+                                android:text="Active"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
 
@@ -155,7 +140,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
-                                android:text="Total Dates"
+                                android:text="Status"
                                 android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -172,60 +157,10 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
-                <!--About Me Card-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/circularbordersolid"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="string/about_me"
-                                android:fontFamily="@font/proximanovaregular"
-                                android:textSize="17sp"
-                                android:textStyle="bold" />
-
-                            <Space
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Edit"
-                                android:fontFamily="@font/proximanovaregular"
-                                android:textColor="#FFCF66"
-                                android:layout_marginEnd="10dp"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="string/my_desc" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
                 <!--Contact Details-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:background="@drawable/circularbordersolid"
                     android:orientation="vertical"
                     android:padding="16dp">
@@ -237,23 +172,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="string/contact"
+                            android:text="Info"
                             android:textSize="17sp"
                             android:fontFamily="@font/proximanovaregular"
                             android:textStyle="bold" />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Edit"
-                            android:textColor="#FFCF66"
-                            android:layout_marginEnd="10dp"
-                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -262,75 +185,149 @@
                         android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
+
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
-                            android:paddingRight="8dp">
-
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:background="@drawable/circular_grey_bordersolid"
-                                android:padding="10dp"
-                                android:src="@drawable/ic_call_24dp" />
+                            android:orientation="vertical"
+                            android:paddingRight="8dp"
+                            android:layout_marginBottom="12dp"
+                            >
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:text="+91 7999193854"
-                                android:textSize="15sp"
-                                android:textColor="@color/goodgrey"
-                                android:fontFamily="@font/proximanovaregular" />
+                                android:paddingStart="10dp"
+                                android:text="Name"
+                                 />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/circular_grey_edit_text"
+                                android:layout_margin="3dp"
+                                >
+                                <EditText
+                                    android:layout_width="260dp"
+                                    android:layout_height="match_parent"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/goodgrey"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:hint="Name"
+                                    android:background="@null"
+                                    android:padding="10dp"
+                                    />
+                            </FrameLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingRight="8dp"
+                            android:layout_marginBottom="12dp"
+
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
+                                android:text="Phone Number"
+                                />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/circular_grey_edit_text"
+                                android:layout_margin="3dp"
+                                >
+                                <EditText
+                                    android:layout_width="260dp"
+                                    android:layout_height="match_parent"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/goodgrey"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:hint="Phone Number"
+                                    android:background="@null"
+                                    android:padding="10dp"
+                                    />
+                            </FrameLayout>
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:gravity="center_vertical"
-                            android:paddingRight="8dp">
+                            android:orientation="vertical"
+                            android:paddingRight="8dp"
+                            android:layout_marginBottom="12dp"
 
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:background="@drawable/circular_grey_bordersolid"
-                                android:padding="10dp"
-                                android:src="@drawable/ic_email_24dp" />
+                            >
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:textColor="@color/goodgrey"
-                                android:text="sanskar@theindianappguy.com"
-                                android:textSize="15sp"
-                                android:fontFamily="@font/proximanovaregular" />
+                                android:paddingStart="10dp"
+                                android:text="Location"
+                                />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/circular_grey_edit_text"
+                                android:layout_margin="3dp"
+                                >
+                                <EditText
+                                    android:layout_width="260dp"
+                                    android:layout_height="match_parent"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/goodgrey"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:hint="Location"
+                                    android:background="@null"
+                                    android:padding="10dp"
+                                    />
+                            </FrameLayout>
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
                             android:gravity="center_vertical"
-                            android:paddingRight="8dp">
+                            android:orientation="vertical"
+                            android:paddingRight="8dp"
+                            android:layout_marginBottom="12dp"
 
-                            <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
-                                android:background="@drawable/circular_grey_bordersolid"
-                                android:padding="10dp"
-                                android:src="@drawable/ic_location_24dp" />
+                            >
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:text="Leeds, United Kingdom"
-                                android:textSize="15sp"
-                                android:textColor="@color/goodgrey"
-                                android:fontFamily="@font/proximanovaregular" />
+                                android:paddingStart="10dp"
+                                android:text="Email"
+                                />
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/circular_grey_edit_text"
+                                android:layout_margin="3dp"
+                                >
+                                <EditText
+                                    android:layout_width="260dp"
+                                    android:layout_height="match_parent"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/goodgrey"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:hint="Email"
+                                    android:background="@null"
+                                    android:padding="10dp"
+                                    />
+                            </FrameLayout>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -352,22 +349,11 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="string/skills"
+                            android:text="Interests"
                             android:textSize="17sp"
                             android:textStyle="bold" />
 
-                        <Space
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1" />
 
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Edit"
-                            android:textColor="#FFCF66"
-                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -377,7 +363,7 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:paddingRight="8dp">
@@ -393,12 +379,22 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="Expert in Photoshop, Adobe XD"
+                                android:text="Artsy"
                                 android:textSize="15sp"/>
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:checked="true"
+                                />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center_vertical"
@@ -415,12 +411,23 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="sanskar@theindianappguy.com"
+                                android:text="Digital"
                                 android:textSize="15sp" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:checked="true"
+                                />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:gravity="center_vertical"
@@ -437,12 +444,29 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
-                                android:text="Leeds, United Kingdom"
+                                android:text="Outdoorsy"
                                 android:textSize="15sp" />
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:checked="true"
+
+                                />
                         </LinearLayout>
 
                     </LinearLayout>
                 </LinearLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_weight="1" />
+
+
             </LinearLayout>
 
         </LinearLayout>
