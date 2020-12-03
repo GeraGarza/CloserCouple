@@ -8,6 +8,7 @@
     tools:context=".MainActivity"
     android:background="@color/active_icon"
 
+
     >
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

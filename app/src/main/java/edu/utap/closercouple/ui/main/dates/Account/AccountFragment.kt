@@ -31,6 +31,7 @@ class AccountFragment  : Fragment() {
         account_create_btn.setOnClickListener {
             requireActivity().supportFragmentManager
                 .beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                 .replace(R.id.main_frame, ProfileFragment.newInstance("Profile"))
                 .addToBackStack(null)
                 .commit()
@@ -39,6 +40,7 @@ class AccountFragment  : Fragment() {
         account_interests_btn.setOnClickListener {
             requireActivity().supportFragmentManager
                 .beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                 .replace(R.id.main_frame, InterestFragment.newInstance("Interests"))
                 .addToBackStack(null)
                 .commit()

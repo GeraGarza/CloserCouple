@@ -54,13 +54,11 @@ class InterestFragment  : Fragment() {
         val fm = requireActivity().supportFragmentManager
 
         textView.setOnClickListener {
-            println("CICKEDD")
             if (fm.backStackEntryCount > 0) {
                 fm.fragments.last().onResume()
                 fm.popBackStackImmediate()
             }
         }
-
     }
 
 

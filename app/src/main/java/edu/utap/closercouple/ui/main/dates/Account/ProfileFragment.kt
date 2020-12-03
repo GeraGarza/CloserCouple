@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import edu.utap.closercouple.MainActivity
@@ -32,8 +33,15 @@ class ProfileFragment: Fragment()  {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        profil_pic.setOnClickListener {
 
+        val textView = activity?.findViewById(R.id.save_interests_btn) as TextView
+        val fm = requireActivity().supportFragmentManager
+
+        textView.setOnClickListener {
+            if (fm.backStackEntryCount > 0) {
+                fm.fragments.last().onResume()
+                fm.popBackStackImmediate()
+            }
         }
     }
 

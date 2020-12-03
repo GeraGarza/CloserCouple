@@ -23,7 +23,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingLeft="20dp"
-            android:paddingTop="10dp"
             android:paddingRight="20dp">
 
             <!--Top Profile Section -->
