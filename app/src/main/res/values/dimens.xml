@@ -9,6 +9,6 @@
     <dimen name="design_bottom_navigation_height" tools:override="true">56dp</dimen>
     <dimen name="profile_icon" >65dp</dimen>
     <dimen name="space_profile_icons">6dp</dimen>
-    <dimen name="account_row_font_size">15dp</dimen>
+    <dimen name="account_row_font_size">15sp</dimen>
 
 </resources>

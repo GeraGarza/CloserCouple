@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.util_action_bar_icon.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
 
 
-class ProfileFragment: Fragment()  {
+class ProfileFragment : Fragment() {
 
 
     companion object {
@@ -62,7 +62,7 @@ class ProfileFragment: Fragment()  {
         mainAct?.supportActionBar?.let {
             val ab = layoutInflater.inflate(R.layout.util_action_bar_icon, container, false)
             mainAct.initActionBar(ab, true)
-            ab.actionTitle.text =  arguments?.getString("NAME")
+            ab.actionTitle.text = arguments?.getString("NAME")
         }
 
 
