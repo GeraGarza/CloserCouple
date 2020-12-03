@@ -39,8 +39,10 @@ class ProfileFragment: Fragment()  {
 
         textView.setOnClickListener {
             if (fm.backStackEntryCount > 0) {
-                fm.fragments.last().onResume()
                 fm.popBackStackImmediate()
+                val parent = fm.fragments.last() as AccountFragment
+                parent.onResume()
+                parent.completedProfile()
             }
         }
     }

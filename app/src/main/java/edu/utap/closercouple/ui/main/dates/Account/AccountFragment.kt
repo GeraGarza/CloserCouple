@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
@@ -15,6 +16,8 @@ import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
 
 class AccountFragment  : Fragment() {
 
+    var interest_completed = false
+
     companion object {
         fun newInstance(title: String): AccountFragment {
             val accountFragment = AccountFragment()
@@ -24,6 +27,20 @@ class AccountFragment  : Fragment() {
             return accountFragment
         }
     }
+
+    fun completedInterests(){
+        interest_completed = true
+        account_interests_btn.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_brush_done));
+        account_interests_check.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_done));
+    }
+
+    fun completedProfile(){
+        interest_completed = true
+        account_create_btn.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_user_done));
+        account_create_check.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_done));
+    }
+
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

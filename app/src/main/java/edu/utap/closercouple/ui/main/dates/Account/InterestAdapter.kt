@@ -120,7 +120,6 @@ class InterestAdapter(
             val red = Color.red(color)
             val green = Color.green(color)
             val blue = Color.blue(color)
-
             val hsl = FloatArray(3)
             ColorUtils.RGBToHSL(red, green, blue, hsl)
             return hsl[2]

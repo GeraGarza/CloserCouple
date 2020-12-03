@@ -28,9 +28,9 @@ scrolling gets corrected to match_parent -->
                 android:layout_gravity="right"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
-                android:maxWidth="80dp"
-                android:maxHeight="80dp"
-                android:src="@drawable/icon_profle_done"
+                android:maxWidth="25dp"
+                android:maxHeight="25dp"
+                android:src="@drawable/ic_check_small"
                 android:visibility="invisible"
 
                 />

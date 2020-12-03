@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import kotlinx.android.synthetic.main.main_rv.*
 import kotlinx.android.synthetic.main.util_action_bar.view.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.*
 
@@ -34,6 +37,8 @@ class ExploreFragment  : Fragment() {
 
     private fun initRecyclerView(root: View) {
         val rv = root.findViewById<RecyclerView>(R.id.recyclerView)
+        val rv_search = root.findViewById<LinearLayout>(R.id.rv_search)
+
         adapter = ExploreDateAdapter(viewModel)
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(context)
@@ -42,6 +47,7 @@ class ExploreFragment  : Fragment() {
         rv.addItemDecoration(itemDecor)
         val swipe = root.findViewById<SwipeRefreshLayout>(R.id.swipe_container)
         swipe.isEnabled = false
+        rv_search.visibility = View.VISIBLE
     }
 
 

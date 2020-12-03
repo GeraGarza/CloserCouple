@@ -10,6 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
+import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.Explore.InterestFragment
 import kotlinx.android.synthetic.main.fragment_date.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.*
@@ -35,6 +36,9 @@ class DateFragment: Fragment()  {
         navView?.selectedItemId = R.id.navigation_account;
         requireActivity().supportFragmentManager
             .beginTransaction()
+            .setCustomAnimations(R.anim.enter_from_no, R.anim.exit_to_no, R.anim.enter_from_left, R.anim.exit_to_right)
+            .replace(R.id.main_frame, AccountFragment.newInstance("Account"))
+
             .replace(R.id.main_frame, frag)
             .addToBackStack(null)
             .commit()
