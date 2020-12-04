@@ -1,10 +1,12 @@
 package edu.utap.closercouple.ui.main.dates.Date
 
+import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -12,16 +14,20 @@ import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
-import edu.utap.closercouple.ui.main.dates.Explore.InterestFragment
+import edu.utap.closercouple.ui.Account.InterestFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_date.*
-import kotlinx.android.synthetic.main.util_action_bar_icon.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
 
 
 class DateFragment : Fragment() {
 
     private val viewModel: UserViewModel by activityViewModels()
+    private lateinit var checkIcon: Drawable
+    private lateinit var profileDoneIcon: Drawable
+    private lateinit var profileEmptyIcon: Drawable
+    private lateinit var interestsDoneIcon: Drawable
+    private lateinit var interestsEmptyIcon: Drawable
 
 
     companion object {
@@ -57,23 +63,56 @@ class DateFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        date_account_btn.setOnClickListener {
+        date_account_icon.setOnClickListener {
             accountIconClicked(ProfileFragment.newInstance("Profile"))
         }
 
-        date_interest_btn.setOnClickListener {
+        date_interests_icon.setOnClickListener {
             accountIconClicked(InterestFragment.newInstance("Interests"))
         }
+
+        viewModel.observeProfileStatus().observe(viewLifecycleOwner,
+            {
+                if(it){
+                    date_account_icon.setImageDrawable(profileDoneIcon);
+                    date_account_check.setImageDrawable(checkIcon)
+                }else{
+                   date_account_icon.setImageDrawable(profileEmptyIcon);
+                }
+            })
+
+        viewModel.observeInterestsStatus().observe(viewLifecycleOwner,
+            {
+                if(it){
+                    date_interests_icon.setImageDrawable(interestsDoneIcon)
+                    date_interests_check.setImageDrawable(checkIcon)
+                }else{
+                    date_interests_icon.setImageDrawable(interestsEmptyIcon)
+                }
+            })
 
     }
 
 
     //https://stackoverflow.com/questions/10450348/do-fragments-really-need-an-empty-constructor
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val view = inflater.inflate(R.layout.fragment_date, container, false)
+
+        checkIcon = AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_done)!!
+        profileDoneIcon =
+            AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_user_done)!!
+        profileEmptyIcon =
+            AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_user_grey)!!
+        interestsDoneIcon =
+            AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_brush_done)!!
+        interestsEmptyIcon =
+            AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_brush_grey)!!
+
 
         requireActivity().supportFragmentManager
             .beginTransaction()
@@ -92,12 +131,14 @@ class DateFragment : Fragment() {
 
         viewModel.observeUserInfo().observe(viewLifecycleOwner,
             {
-                date_welcome_tv.text = "Good morning ${it.name}!"
+                val welcome_text = "Good morning"
+                if(it.name!="")  date_welcome_tv.text = "${welcome_text}, \n${it.name}!"
+                else date_welcome_tv.text = "$welcome_text!"
             })
 
 
 
-        return inflater.inflate(R.layout.fragment_date, container, false)
+        return view
     }
 
 }

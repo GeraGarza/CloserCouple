@@ -25,128 +25,6 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
 
-            <!--Top Profile Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/circularbordersolid"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-
-                    <ImageView
-                        android:id="@+id/profil_pic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/icon_account_grey"
-                        android:adjustViewBounds="true"
-                        android:maxWidth="60dp"
-                        android:maxHeight="60dp"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@android:color/transparent"
-                        />
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/profile_name_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/proximanovaregular"
-                        android:text="Jose Garza"
-                        android:textColor="#424242"
-                        android:textSize="21sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/circular_grey_bordersolid"
-                            android:padding="10dp"
-                            android:src="@drawable/icon_heart_red" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="13"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:text="Total Dates"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:gravity="center"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/circular_grey_bordersolid"
-                            android:padding="10dp"
-                            android:src="@drawable/icon_heart_grey" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Active"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:text="Status"
-                                android:textSize="12sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-            </LinearLayout>
 
             <!--Bootom Cards with sections-->
             <LinearLayout
@@ -165,19 +43,7 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Info"
-                            android:textSize="17sp"
-                            android:fontFamily="@font/proximanovaregular"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -199,7 +65,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Name"
+                                android:text="Place"
                                  />
 
                             <FrameLayout
@@ -215,7 +81,7 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/goodgrey"
                                     android:fontFamily="@font/proximanovaregular"
-                                    android:hint="Name"
+                                    android:hint="Place"
                                     android:background="@null"
                                     android:padding="10dp"
                                     />
@@ -237,7 +103,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Phone Number"
+                                android:text="Estimated Duration"
                                 />
 
                             <FrameLayout
@@ -253,7 +119,7 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/goodgrey"
                                     android:fontFamily="@font/proximanovaregular"
-                                    android:hint="Phone Number"
+                                    android:hint="Duration"
                                     android:background="@null"
                                     android:padding="10dp"
                                     />
@@ -274,7 +140,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Location"
+                                android:text="Cost"
                                 />
 
                             <FrameLayout
@@ -290,7 +156,7 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/goodgrey"
                                     android:fontFamily="@font/proximanovaregular"
-                                    android:hint="Location"
+                                    android:hint="Cost"
                                     android:background="@null"
                                     android:padding="10dp"
                                     />
@@ -311,7 +177,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Email"
+                                android:text="Picture"
                                 />
 
                             <FrameLayout
@@ -327,7 +193,7 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/goodgrey"
                                     android:fontFamily="@font/proximanovaregular"
-                                    android:hint="Email"
+                                    android:hint="Picture"
                                     android:background="@null"
                                     android:padding="10dp"
                                     />
@@ -340,6 +206,17 @@
 
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/done_create_date_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textColor="@color/black"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:theme="@style/ButtonStyleTextColor"
+
+                />
 
         </LinearLayout>
 

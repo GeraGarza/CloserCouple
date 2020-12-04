@@ -65,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="Add date"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/white_text"
                     android:layout_marginEnd="20dp"
                     android:visibility="visible"

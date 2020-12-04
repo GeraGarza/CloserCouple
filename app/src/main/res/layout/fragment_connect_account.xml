@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/active_icon"
+
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/fragment_background"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/transparent"
+
+            >
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="1dp"
+                android:text="Ask your partner\nfor their username"
+                android:textAlignment="center"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:id="@+id/connect_your_username"
+                    android:text="Your username: Gera_"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/account_row_font_size"
+                    android:textAlignment="textStart"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="@drawable/btn_account_clicked"
+                    />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circular_grey_edit_text"
+                    android:layout_margin="12dp"
+
+                    >
+                    <EditText
+                        android:id="@+id/et_user_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="15sp"
+                        android:textColor="@color/goodgrey"
+                        android:fontFamily="@font/proximanovaregular"
+                        android:hint="Partner's Username"
+                        android:background="@null"
+                        android:padding="10dp"
+                        />
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/connect_partner_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/blue_active"
+                    android:padding="12dp"
+                    android:text="Connect Partner"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/account_row_font_size"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

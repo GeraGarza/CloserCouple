@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -12,10 +13,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import edu.utap.closercouple.DateList
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.Explore.AddDateFragment
+import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
 import edu.utap.closercouple.ui.main.dates.DateListAdapter
 import edu.utap.closercouple.ui.main.dates.UserViewModel
+import kotlinx.android.synthetic.main.main_rv.*
 import kotlinx.android.synthetic.main.util_action_bar.view.*
 
 class ExploreFragment  : Fragment() {
@@ -33,12 +38,28 @@ class ExploreFragment  : Fragment() {
         }
     }
 
+    private fun clickedAddDate(frag: Fragment) {
+        requireActivity().supportFragmentManager
+            .beginTransaction()
+            .setCustomAnimations(
+                R.anim.enter_from_right,
+                R.anim.exit_to_left,
+                R.anim.enter_from_left,
+                R.anim.exit_to_right
+            )
+            .replace(R.id.main_frame, frag)
+            .addToBackStack(null)
+            .commit()
+    }
 
     private fun initRecyclerView(root: View) {
         val rv = root.findViewById<RecyclerView>(R.id.recyclerView)
         val rv_search = root.findViewById<LinearLayout>(R.id.rv_search)
-
-        adapter = DateListAdapter(viewModel)
+        val add_date_btn = root.findViewById<Button>(R.id.add_date_btn)
+        add_date_btn.setOnClickListener {
+            clickedAddDate(AddDateFragment.newInstance("Add Date"))
+        }
+        adapter = DateListAdapter(viewModel, DateList.Explore)
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(context)
         val itemDecor = DividerItemDecoration(rv.context, LinearLayoutManager.VERTICAL)

@@ -2,20 +2,12 @@ package edu.utap.closercouple.ui.main.dates.Repos
 
 import android.graphics.Color
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.Model.InterestItem
 
 object InterestsList {
     private var list: List<InterestItem>
 
-    class InterestItem(i: Int, var name: String, icon: Int, selected: Boolean) {
-        var color: Int = 0
-        var selected: Boolean = false
-        var icon = R.drawable.ic_call_24dp
-        init {
-            this.color = Color.rgb(i shr 16 and 0xFF, i shr 8 and 0xFF, i and 0xFF)
-            this.selected = selected
-            this.icon = icon
-        }
-    }
+
     // These are all "static" methods because this is an object, not a class
     fun getAll() : List<InterestItem> { return list }
     fun size() : Int { return list.size }

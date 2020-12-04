@@ -5,6 +5,11 @@
         <item name="colorPrimary">@color/active_icon</item>
         <item name="colorPrimaryVariant">@color/active_icon</item>
         <item name="colorOnPrimary">@color/active_icon</item>
+
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Colored</item>
+        <item name="buttonStyle">@style/Widget.AppCompat.Button.Colored</item>
+
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/active_icon</item>
         <item name="colorSecondaryVariant">@color/active_icon</item>
@@ -17,6 +22,14 @@
     <style name="Theme.CloserCouple.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ButtonStyleTextColor">
+        <!-- For filled buttons, your theme's colorPrimary provides the default background color of the component, and -->
+        <!--the text color is colorOnPrimary -->
+        <item name="colorPrimary">@color/white_text</item>
+        <item name="colorOnPrimary">@color/white_text</item>
+
     </style>
 
 

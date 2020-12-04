@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import edu.utap.closercouple.Data
+import edu.utap.closercouple.DateList
 import edu.utap.closercouple.R
 
 
-class DateListAdapter(private val viewModel: UserViewModel) :
+class DateListAdapter(private val viewModel: UserViewModel, lType: DateList) :
     ListAdapter<String, DateListAdapter.VH>(DateDiff()) {
     class DateDiff : DiffUtil.ItemCallback<String>() {
 
@@ -27,6 +28,7 @@ class DateListAdapter(private val viewModel: UserViewModel) :
         }
     }
 
+    private val listType = lType
     inner class VH(view: View) :
         RecyclerView.ViewHolder(view) {
 
@@ -43,8 +45,16 @@ class DateListAdapter(private val viewModel: UserViewModel) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+
+        val rowType =
+            if(DateList.Memories ==  listType)
+                R.layout.util_row_memory
+            else
+                R.layout.util_row_date
+
+
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.util_row_date, parent, false)
+            .inflate(rowType, parent, false)
         return VH(itemView)
     }
 

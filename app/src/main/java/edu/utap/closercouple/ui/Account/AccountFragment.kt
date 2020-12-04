@@ -10,13 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.Account.ConnectAccountFragment
+import edu.utap.closercouple.ui.Account.InterestFragment
 import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_account.*
-import kotlinx.android.synthetic.main.fragment_date.*
-import kotlinx.android.synthetic.main.util_action_bar_icon.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
-import java.util.*
 
 class AccountFragment : Fragment() {
 
@@ -37,13 +36,6 @@ class AccountFragment : Fragment() {
         }
     }
 
-    fun completedInterests(img: Drawable) {
-        account_interests_icon.setImageDrawable(img);
-    }
-
-    fun completedProfile(img: Drawable) {
-        account_create_icon.setImageDrawable(img);
-    }
 
     private fun clickedIcon(frag: Fragment) {
         requireActivity().supportFragmentManager
@@ -63,24 +55,28 @@ class AccountFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         account_create_btn.setOnClickListener { clickedIcon(ProfileFragment.newInstance("Profile")) }
-        account_create_icon.setOnClickListener { clickedIcon(ProfileFragment.newInstance("Profile")) }
+        account_account_icon.setOnClickListener { clickedIcon(ProfileFragment.newInstance("Profile")) }
         account_interests_btn.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
         account_interests_icon.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
-
+        account_connect_account.setOnClickListener{ clickedIcon(ConnectAccountFragment.newInstance("Connect Account")) }
 
 
         viewModel.observeProfileStatus().observe(viewLifecycleOwner,
             {
-                val statusPro = if (it) profileDoneIcon else profileEmptyIcon
-                completedProfile(statusPro)
-                if (it) account_create_check.setImageDrawable(checkIcon)
+                if(it){
+                    account_account_icon.setImageDrawable(profileDoneIcon);
+                    account_account_check.setImageDrawable(checkIcon)
+                }else account_account_icon.setImageDrawable(profileEmptyIcon);
+
             })
 
         viewModel.observeInterestsStatus().observe(viewLifecycleOwner,
             {
-                val statusInt = if (it) interestsDoneIcon else interestsEmptyIcon
-                completedInterests(statusInt)
-                if (it) account_interests_check.setImageDrawable(checkIcon)
+                if(it){
+                    account_interests_icon.setImageDrawable(interestsDoneIcon)
+                    account_interests_check.setImageDrawable(checkIcon)
+                }else account_interests_icon.setImageDrawable(interestsEmptyIcon)
+
             })
     }
 
@@ -90,7 +86,6 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view = inflater.inflate(R.layout.fragment_account, container, false)
         checkIcon = AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_done)!!
         profileDoneIcon =
             AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_user_done)!!
@@ -108,7 +103,7 @@ class AccountFragment : Fragment() {
             mainAct.initActionBar(ab, false)
             ab.actionTitle.text = arguments?.getString("NAME")
         }
-        return view
+        return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
 }

@@ -16,6 +16,7 @@ import androidx.core.graphics.ColorUtils
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.Model.InterestItem
 import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlin.random.Random
@@ -28,7 +29,7 @@ import kotlin.random.Random
 class InterestAdapter(
     private val viewModel: UserViewModel,
     private val mContext: Context,
-    private val colorList: List<InterestsList.InterestItem>
+    private val colorList: List<InterestItem>
 ) : RecyclerView.Adapter<InterestAdapter.ViewHolder>() {
 
     private var random = Random(System.currentTimeMillis())

@@ -15,8 +15,6 @@ import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
-
-
     // https://stackoverflow.com/questions/24838155/set-onclick-listener-on-action-bar-title-in-android/29823008#29823008
     fun initActionBar(view: View, backButton: Boolean = false) {
 

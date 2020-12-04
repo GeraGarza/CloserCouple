@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.utap.closercouple.Data
 import edu.utap.closercouple.Repository
+import edu.utap.closercouple.ui.Model.InterestItem
 import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
 import kotlin.random.Random
 
@@ -14,7 +15,7 @@ class UserViewModel : ViewModel() {
     private var list = MutableLiveData<List<Data>>().apply {
         value = repository.fetchData()
     }
-    private var interestsList = MutableLiveData<List<InterestsList.InterestItem>>().apply {
+    private var interestsList = MutableLiveData<List<InterestItem>>().apply {
         value = InterestsList.getAll()
     }
 
@@ -69,7 +70,7 @@ class UserViewModel : ViewModel() {
     }
 
 
-    fun getInterestListAt(position: Int): InterestsList.InterestItem {
+    fun getInterestListAt(position: Int): InterestItem {
         val localList = interestsList.value!!.toList()
         return localList[position]
     }
@@ -81,11 +82,11 @@ class UserViewModel : ViewModel() {
     }
 
 
-    internal fun observeInterestsList(): LiveData<List<InterestsList.InterestItem>> {
+    internal fun observeInterestsList(): LiveData<List<InterestItem>> {
         return interestsList
     }
 
-    fun addInterest(interest: InterestsList.InterestItem) {
+    fun addInterest(interest: InterestItem) {
         val localList = interestsList.value?.toMutableList()
         localList?.let {
             it.add(interest)
@@ -93,7 +94,7 @@ class UserViewModel : ViewModel() {
         }
     }
 
-    fun removeInterest(interest: InterestsList.InterestItem) {
+    fun removeInterest(interest: InterestItem) {
         val localList = interestsList.value?.toMutableList()
         localList?.let {
             it.remove(interest)

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import edu.utap.closercouple.DateList
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.DateListAdapter
@@ -40,7 +41,7 @@ class MemoriesFragment  : Fragment() {
         val rv_search = root.findViewById<LinearLayout>(R.id.rv_search)
         val add_date_btn = root.findViewById<Button>(R.id.add_date_btn)
 
-        adapter = DateListAdapter(viewModel)
+        adapter = DateListAdapter(viewModel, DateList.Memories)
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(context)
         val itemDecor = DividerItemDecoration(rv.context, LinearLayoutManager.VERTICAL)

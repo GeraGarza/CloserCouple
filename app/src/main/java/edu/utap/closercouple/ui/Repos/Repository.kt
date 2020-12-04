@@ -3,6 +3,10 @@ package edu.utap.closercouple
 // This is the model in MVVM
 data class Data(val name: String, val rating: Boolean)
 // This abstracts either stable storage (file or database)
+enum class DateList {
+    Memories, Explore
+}
+
 //   or the network
 class Repository {
     companion object {

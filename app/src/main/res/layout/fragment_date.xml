@@ -84,7 +84,7 @@
                         android:layout_height="fill_parent">
 
                         <ImageButton
-                            android:id="@+id/date_account_btn"
+                            android:id="@+id/date_account_icon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -99,6 +99,7 @@
                             />
 
                         <ImageView
+                            android:id="@+id/date_account_check"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -181,7 +182,7 @@
                         android:layout_height="fill_parent">
 
                         <ImageButton
-                            android:id="@+id/date_interest_btn"
+                            android:id="@+id/date_interests_icon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
@@ -195,6 +196,7 @@
                             />
 
                         <ImageView
+                            android:id="@+id/date_interests_check"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
