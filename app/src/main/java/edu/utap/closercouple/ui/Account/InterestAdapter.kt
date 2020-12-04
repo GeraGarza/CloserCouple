@@ -13,9 +13,11 @@ import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
+import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlin.random.Random
 
 
@@ -24,16 +26,13 @@ import kotlin.random.Random
  */
 
 class InterestAdapter(
+    private val viewModel: UserViewModel,
     private val mContext: Context,
     private val colorList: List<InterestsList.InterestItem>
 ) : RecyclerView.Adapter<InterestAdapter.ViewHolder>() {
 
     private var random = Random(System.currentTimeMillis())
 
-    // Create a new, writable list that we initialize with colorList
-    private var list = mutableListOf<InterestsList.InterestItem>().apply {
-        addAll(colorList.shuffled())
-    }
 
     inner class ViewHolder(var v: View) : RecyclerView.ViewHolder(v) {
         // private var textView = ??????
@@ -41,48 +40,41 @@ class InterestAdapter(
         private var card: CardView = v.findViewById(R.id.interest_card)
         private var cardIcon: ImageView = v.findViewById(R.id.card_icon)
         private var checkedIcon: ImageView = v.findViewById(R.id.checked)
-        private var white = ContextCompat.getColor(v.context, R.color.white_text)
-        private var black = ContextCompat.getColor(v.context, R.color.black)
         private var red =  ContextCompat.getColor(v.context, R.color.active_icon)
 
         init {
+            card.setOnClickListener {
+                val pos = adapterPosition
+                val interest = viewModel.getInterestListAt(pos)
 
+                if (interest.selected) {
+                    viewModel.removeInterest(interest)
+                } else {
+                    viewModel.addInterest(interest)
+                }
+            }
         }
 
         fun bind(pos: Int) {
 
-            val interest = list[pos]
+            val interest = viewModel.getInterestListAt(pos)
             val shape = GradientDrawable()
             shape.cornerRadius = 30f
 
             if (interest.selected) {
-                interestCard.setTextColor(black)
                 shape.setColor(red)
                 checkedIcon.visibility = View.VISIBLE
-
             } else {
-                val luminance = getLuminance(interest.color)
-                if (luminance < 0.3) interestCard.setTextColor(white)
-                else interestCard.setTextColor(black)
                 shape.setColor(interest.color)
                 checkedIcon.visibility = View.INVISIBLE
-
             }
             card.setOnClickListener {
-                list[pos] = InterestsList.InterestItem(
-                    interest.color,
-                    interest.name,
-                    interest.icon,
-                    !list[pos].selected
-                )
-                if (list[pos].selected) {
+                viewModel.toggleInterestItemAt(pos)
+                if (interest.selected) {
                     shape.setColor(red)
-                    interestCard.setTextColor(white)
                     checkedIcon.visibility = View.VISIBLE
+
                 } else {
-                    val luminance = getLuminance(interest.color)
-                    if (luminance < 0.3) interestCard.setTextColor(white)
-                    else interestCard.setTextColor(black)
                     shape.setColor(interest.color)
                     checkedIcon.visibility = View.INVISIBLE
 

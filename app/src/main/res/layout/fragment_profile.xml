@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/profile_name_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -208,6 +209,7 @@
                                 android:layout_margin="3dp"
                                 >
                                 <EditText
+                                    android:id="@+id/et_user_name"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
                                     android:textSize="15sp"
@@ -245,6 +247,7 @@
                                 android:layout_margin="3dp"
                                 >
                                 <EditText
+                                    android:id="@+id/et_user_number"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
                                     android:textSize="15sp"
@@ -281,6 +284,7 @@
                                 android:layout_margin="3dp"
                                 >
                                 <EditText
+                                    android:id="@+id/et_user_location"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
                                     android:textSize="15sp"
@@ -317,6 +321,7 @@
                                 android:layout_margin="3dp"
                                 >
                                 <EditText
+                                    android:id="@+id/et_user_email"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
                                     android:textSize="15sp"

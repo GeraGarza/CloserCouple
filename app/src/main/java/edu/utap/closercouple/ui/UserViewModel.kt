@@ -6,93 +6,131 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.utap.closercouple.Data
 import edu.utap.closercouple.Repository
+import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
 import kotlin.random.Random
 
 class UserViewModel : ViewModel() {
-    private val TAG: String = UserViewModel::class.java.simpleName
     private var repository = Repository()
     private var list = MutableLiveData<List<Data>>().apply {
         value = repository.fetchData()
     }
-    internal var selected = -1
-    private val random = Random(System.currentTimeMillis())
-    private var favAlbums = MutableLiveData<List<Data>>().apply {
-        value = mutableListOf()
+    private var interestsList = MutableLiveData<List<InterestsList.InterestItem>>().apply {
+        value = InterestsList.getAll()
     }
+
     internal fun getList(): LiveData<List<Data>> {
         return list
     }
 
-    fun getListAt(position: Int) : Data? {
+    private var user = MutableLiveData<UserInfo>().apply {
+        value = UserInfo("", "")
+    }
+
+    private var completedProfile = MutableLiveData<Boolean>().apply {
+        value = false
+    }
+
+    private var completedInterests = MutableLiveData<Boolean>().apply {
+        value = false
+    }
+
+
+    data class UserInfo(
+        val name: String = "",
+        val number: String = "",
+        val location: String = "",
+        val email: String = ""
+    )
+
+    fun updateUserInfo(userValues: UserInfo) {
+        user.value = userValues
+        completedProfile.value = true
+    }
+
+    fun updateInterestStatus() {
+        completedInterests.value = true
+    }
+
+
+    fun observeUserInfo(): MutableLiveData<UserInfo> {
+        return user
+    }
+
+    fun observeProfileStatus(): MutableLiveData<Boolean> {
+        return completedProfile
+    }
+
+    fun observeInterestsStatus(): MutableLiveData<Boolean> {
+        return completedInterests
+    }
+
+    fun getUserInfo(): UserInfo {
+        return user.value!!
+    }
+
+
+    fun getInterestListAt(position: Int): InterestsList.InterestItem {
+        val localList = interestsList.value!!.toList()
+        return localList[position]
+    }
+
+    fun toggleInterestItemAt(position: Int) {
+        val localList = interestsList.value!!.toList()
+        localList[position].selected = !localList[position].selected
+        interestsList.value = localList
+    }
+
+
+    internal fun observeInterestsList(): LiveData<List<InterestsList.InterestItem>> {
+        return interestsList
+    }
+
+    fun addInterest(interest: InterestsList.InterestItem) {
+        val localList = interestsList.value?.toMutableList()
+        localList?.let {
+            it.add(interest)
+            interestsList.value = it
+        }
+    }
+
+    fun removeInterest(interest: InterestsList.InterestItem) {
+        val localList = interestsList.value?.toMutableList()
+        localList?.let {
+            it.remove(interest)
+            interestsList.value = it
+        }
+    }
+
+
+    fun isInterest(albumRec: Data): Boolean {
+        return interestsList.value?.contains(albumRec) ?: false
+    }
+
+    fun removeFav(albumRec: Data) {
+        val localList = interestsList.value?.toMutableList()
+        localList?.let {
+            it.remove(albumRec)
+            interestsList.value = it
+        }
+    }
+
+
+    fun replaceList(newList: List<Data>) {
+        list.value = newList
+    }
+
+    fun getItemCount(): Int {
+        return list.value?.size ?: 0
+    }
+
+    fun getListAt(position: Int): Data? {
         val localList = list.value?.toList()
         localList?.let {
-            if( position >= it.size ) return null
+            if (position >= it.size) return null
             return it[position]
         }
         return null
     }
-    internal fun observeFav(): LiveData<List<Data>> {
-        return favAlbums
-    }
-    fun addFav(albumRec: Data) {
-        val localList = favAlbums.value?.toMutableList()
-        localList?.let {
-            it.add(albumRec)
-            favAlbums.value = it
-        }
-    }
-    fun isFav(albumRec: Data): Boolean {
-        return favAlbums.value?.contains(albumRec) ?: false
-    }
-    fun removeFav(albumRec: Data) {
-        val localList = favAlbums.value?.toMutableList()
-        localList?.let {
-            it.remove(albumRec)
-            favAlbums.value = it
-        }
-    }
 
-    // Add random object from repository.fetchData() to end of list
-    fun addNetObject() {
-        val allList = repository.fetchData()
-        val localList = list.value?.toMutableList()
-        localList?.let {
-            it.add(allList[random.nextInt(0, allList.size)])
-            list.value = it
-        }
-    }
-    fun removeAt(position: Int) {
-        val localList = list.value?.toMutableList()
-        localList?.let {
-            it.removeAt(position)
-            list.value = it
-        }
-    }
-    fun swapItem(from: Int, to: Int) {
-        if( from == to ) return
-        val localList = list.value?.toMutableList()
-        localList?.let {
-            val toItem = it[to]
-            it[to] = it[from]
-            it[from] = toItem
-            list.value = it
-        }
-    }
-    fun replaceList(newList: List<Data>) {
-        list.value = newList
-        selected = -1
-    }
-    fun clearList() {
-        list.value = listOf()
-        selected = -1
-    }
-    fun getItemCount() : Int {
-        return list.value?.size ?: 0
-    }
 
-    override fun onCleared() {
-        super.onCleared()
-        // NB: A place to clean up e.g., network connections when the ViewModel is being destroyed
-        Log.d(TAG, "on cleared called")
-    }
 }

@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -19,13 +20,16 @@ import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Account.InterestAdapter
 import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
+import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_date.*
 import kotlinx.android.synthetic.main.main_rv.*
 import kotlinx.android.synthetic.main.util_action_bar.view.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.*
 
 
-class InterestFragment  : Fragment() {
+class InterestFragment : Fragment() {
+
+    private val viewModel: UserViewModel by activityViewModels()
     private lateinit var adapter: InterestAdapter
     private lateinit var rv: RecyclerView
 
@@ -44,7 +48,7 @@ class InterestFragment  : Fragment() {
         val rv = root.findViewById<RecyclerView>(R.id.recyclerView)
         val rv_search = root.findViewById<LinearLayout>(R.id.rv_search)
 
-        adapter = InterestAdapter(requireContext(), InterestsList.getAll())
+        adapter = InterestAdapter(viewModel, requireContext(), InterestsList.getAll())
         rv.adapter = adapter
         rv.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         val swipe = root.findViewById<SwipeRefreshLayout>(R.id.swipe_container)
@@ -52,22 +56,11 @@ class InterestFragment  : Fragment() {
         rv_search.visibility = View.GONE
     }
 
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val save_btn = requireActivity().findViewById<TextView>(R.id.save_btn)
+        save_btn.visibility = View.GONE
 
-        val textView = activity?.findViewById(R.id.save_interests_btn) as TextView
-        val fm = requireActivity().supportFragmentManager
-
-        textView.setOnClickListener {
-
-            if (fm.backStackEntryCount > 0) {
-                fm.popBackStackImmediate()
-                val parent = fm.fragments.last() as AccountFragment
-                parent.onResume()
-                parent.completedInterests()
-            }
-        }
     }
 
 
@@ -81,18 +74,18 @@ class InterestFragment  : Fragment() {
         initRecyclerView(view)
 
 
-
         val mainAct = (activity as MainActivity?)
         mainAct?.supportActionBar?.let {
             val ab = layoutInflater.inflate(R.layout.util_action_bar_icon, container, false)
             mainAct.initActionBar(ab, true)
-            ab.actionTitle.text =  arguments?.getString("NAME")
+            ab.actionTitle.text = arguments?.getString("NAME")
         }
 
         val toolbar = mainAct?.findViewById(R.id.toolbar) as Toolbar
         val fm = requireActivity().supportFragmentManager
         toolbar.setNavigationOnClickListener {
             if (fm.backStackEntryCount > 0) {
+                viewModel.updateInterestStatus()
                 fm.fragments.last().onResume()
                 fm.popBackStackImmediate()
             }
