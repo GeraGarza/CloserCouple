@@ -53,7 +53,7 @@ class ProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         name_title = activity?.findViewById(R.id.profile_name_title) as TextView
         user_name = activity?.findViewById(R.id.et_user_name) as TextView
-        user_number = activity?.findViewById(R.id.et_user_number) as TextView
+        user_number = activity?.findViewById(R.id.et_partners_name) as TextView
         user_location = activity?.findViewById(R.id.et_user_email) as TextView
         user_email = activity?.findViewById(R.id.et_user_location) as TextView
 

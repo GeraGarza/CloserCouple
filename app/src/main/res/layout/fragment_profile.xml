@@ -16,7 +16,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:layout_marginBottom="55dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -237,8 +239,48 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
+                                android:text="Partner's Name"
+                                />
+
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/circular_grey_edit_text"
+                                android:layout_margin="3dp"
+                                >
+                                <TextView
+                                    android:id="@+id/et_partners_name"
+                                    android:layout_width="260dp"
+                                    android:layout_height="match_parent"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/goodgrey"
+                                    android:fontFamily="@font/proximanovaregular"
+                                    android:hint="Partner's N"
+                                    android:background="@null"
+                                    android:padding="10dp"
+                                    />
+                            </FrameLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingRight="8dp"
+                            android:layout_marginBottom="12dp"
+
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="10dp"
                                 android:text="Phone Number"
                                 />
+
 
                             <FrameLayout
                                 android:layout_width="match_parent"

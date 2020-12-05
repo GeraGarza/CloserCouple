@@ -26,6 +26,70 @@
     <include layout="@layout/main_content" />
 
 
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/de_ative_icon"
+        android:orientation="vertical"
+        >
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_heart_fly"
+                android:id="@+id/image1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+
+        <TextView
+            android:id="@+id/status_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Closer Couple"
+            android:layout_gravity="center"
+            android:textSize="30sp"
+            android:textColor="@color/white_text"
+            android:fontFamily="@font/playfairdisplayregular"
+            />
+
+
+        <com.shobhitpuri.custombuttons.GoogleSignInButton
+            android:id="@+id/sign_in_btn"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Continue with Google"
+            app:isDarkTheme="true"
+
+            />
+
+
+
+        <Button
+            android:id="@+id/sign_out_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Out"
+            android:textColor="@color/white_text"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
+
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
@@ -42,5 +106,6 @@
         app:itemIconTint="@drawable/selector_bottom_nav_icon_color"
         app:itemTextColor="@drawable/selector_bottom_nav_icon_color"
         />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

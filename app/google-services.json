@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "619081117801",
+    "project_id": "closercouple-11afd",
+    "storage_bucket": "closercouple-11afd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619081117801:android:9dd86fb8ec56c55eecf2f8",
+        "android_client_info": {
+          "package_name": "edu.utap.closercouple"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619081117801-7discbom6orppmg9r1qm3mc7s82jooek.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.utap.closercouple",
+            "certificate_hash": "bfcbcbbc9974fec3584d1c9ad84cbdd683c95846"
+          }
+        },
+        {
+          "client_id": "619081117801-t8n6j3un0m146o2cnimr63kl947qfic3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_3WbWd04-5vGzubtI80_Oj8tLVvFVXqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619081117801-t8n6j3un0m146o2cnimr63kl947qfic3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
