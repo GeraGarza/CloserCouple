@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rating_row"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/rate_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_heart_rate_red"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:maxWidth="25dp"
+        android:maxHeight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:padding="2dp"
+        />
+
+    <ImageButton
+        android:id="@+id/rate_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_heart_rate_red"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:maxWidth="25dp"
+        android:maxHeight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:padding="2dp"
+        />
+
+    <ImageButton
+        android:id="@+id/rate_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_heart_rate_red"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:maxWidth="25dp"
+        android:maxHeight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:padding="2dp"
+        />
+
+    <ImageButton
+        android:id="@+id/rate_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_heart_rate_empty"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:maxWidth="25dp"
+        android:maxHeight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:padding="2dp"
+        />
+
+    <ImageButton
+        android:id="@+id/rate_five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_heart_rate_empty"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:maxWidth="25dp"
+        android:maxHeight="25dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:color/transparent"
+        android:padding="2dp"
+        />
+
+</LinearLayout>

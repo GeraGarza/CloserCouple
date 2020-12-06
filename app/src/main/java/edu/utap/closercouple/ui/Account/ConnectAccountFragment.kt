@@ -14,6 +14,7 @@ import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
+import kotlinx.android.synthetic.main.fragment_connect_account.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
 
 class ConnectAccountFragment : Fragment() {
@@ -32,12 +33,8 @@ class ConnectAccountFragment : Fragment() {
     }
 
 
-
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        val connect_partner_btn = activity?.findViewById(R.id.connect_partner_btn) as Button
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val fm = requireActivity().supportFragmentManager
         val save_btn = requireActivity().findViewById<TextView>(R.id.save_btn)

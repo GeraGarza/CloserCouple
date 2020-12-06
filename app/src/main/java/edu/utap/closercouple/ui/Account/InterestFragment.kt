@@ -49,8 +49,8 @@ class InterestFragment : Fragment() {
         rv_search.visibility = View.GONE
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val save_btn = requireActivity().findViewById<TextView>(R.id.save_btn)
         save_btn.visibility = View.GONE
 
@@ -78,7 +78,6 @@ class InterestFragment : Fragment() {
         val fm = requireActivity().supportFragmentManager
         toolbar.setNavigationOnClickListener {
             if (fm.backStackEntryCount > 0) {
-                viewModel.updateInterestStatus()
                 fm.fragments.last().onResume()
                 fm.popBackStackImmediate()
             }

@@ -4,14 +4,24 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.auth.FirebaseAuth
 import edu.utap.closercouple.Data
 import edu.utap.closercouple.Repository
+import edu.utap.closercouple.ui.Model.DateItem
 import edu.utap.closercouple.ui.Model.InterestItem
+import edu.utap.closercouple.ui.ViewModelDBHelper
 import edu.utap.closercouple.ui.main.dates.Repos.InterestsList
-import kotlin.random.Random
+import edu.utap.closercouple.ui.Model.User
+
 
 class UserViewModel : ViewModel() {
     private var repository = Repository()
+    private var ExploreDatesList = MutableLiveData<List<DateItem>>()
+    private var MemoryDatesList = MutableLiveData<List<DateItem>>()
+    private var totalInterestsSelected = MutableLiveData<Int>()
+
+    private val dbHelp = ViewModelDBHelper(ExploreDatesList, MemoryDatesList)
+    private lateinit var auth: FirebaseAuth
     private var list = MutableLiveData<List<Data>>().apply {
         value = repository.fetchData()
     }
@@ -23,37 +33,33 @@ class UserViewModel : ViewModel() {
         return list
     }
 
-    private var user = MutableLiveData<UserInfo>().apply {
-        value = UserInfo("", "")
+    private var user = MutableLiveData<User>().apply {
+        value = User("", "", "", "", "", "", listOf(), "", listOf(), "", "")
     }
 
     private var completedProfile = MutableLiveData<Boolean>().apply {
         value = false
     }
 
-    private var completedInterests = MutableLiveData<Boolean>().apply {
-        value = false
-    }
 
 
-    data class UserInfo(
-        val name: String = "",
-        val number: String = "",
-        val location: String = "",
-        val email: String = ""
-    )
-
-    fun updateUserInfo(userValues: UserInfo) {
-        user.value = userValues
+    fun updateUserInfo(userName: String, userNum: String, usrLoc: String, usrEm: String) {
+        user.value?.displayName = userName
+        user.value?.location = usrLoc
         completedProfile.value = true
     }
 
-    fun updateInterestStatus() {
-        completedInterests.value = true
+
+
+    fun observeExploreDates(): LiveData<List<DateItem>> {
+        return ExploreDatesList
     }
 
+    fun observeMemoryDates(): LiveData<List<DateItem>> {
+        return MemoryDatesList
+    }
 
-    fun observeUserInfo(): MutableLiveData<UserInfo> {
+    fun observeUserInfo(): MutableLiveData<User> {
         return user
     }
 
@@ -61,11 +67,11 @@ class UserViewModel : ViewModel() {
         return completedProfile
     }
 
-    fun observeInterestsStatus(): MutableLiveData<Boolean> {
-        return completedInterests
+    fun observeInterestsCount(): MutableLiveData<Int> {
+        return totalInterestsSelected
     }
 
-    fun getUserInfo(): UserInfo {
+    fun getUserInfo(): User {
         return user.value!!
     }
 
@@ -75,50 +81,54 @@ class UserViewModel : ViewModel() {
         return localList[position]
     }
 
-    fun toggleInterestItemAt(position: Int) {
+    fun toggleInterestItemAt(position: Int?) {
+        if(position==null || position==-1){
+            return
+        }
+
         val localList = interestsList.value!!.toList()
         localList[position].selected = !localList[position].selected
         interestsList.value = localList
+        if(localList[position].selected)
+            addInterestToUserInFirebase(position)
+        else
+            removeInterestFromUserInFirebase(position)
     }
 
 
-    internal fun observeInterestsList(): LiveData<List<InterestItem>> {
-        return interestsList
+
+
+
+    /////////////////////////////////////////////////////////////
+    // Notes, memory cache and database interaction
+
+    fun isExploreDatesEmpty(): Boolean {
+        return ExploreDatesList.value.isNullOrEmpty()
     }
 
-    fun addInterest(interest: InterestItem) {
-        val localList = interestsList.value?.toMutableList()
-        localList?.let {
-            it.add(interest)
-            interestsList.value = it
-        }
+    // Get a note from the memory cache
+    fun getExploreDate(position: Int): DateItem {
+        val date = ExploreDatesList.value?.get(position)
+        Log.d(javaClass.simpleName, "notesList.value ${ExploreDatesList.value}")
+        Log.d(javaClass.simpleName, "getNode $position list len ${ExploreDatesList.value?.size}")
+        return date!!
+    }
+    /////////////////////////////////////////////////////////////
+
+    // Notes, memory cache and database interaction
+
+    fun isMemoryDatesEmpty(): Boolean {
+        return MemoryDatesList.value.isNullOrEmpty()
     }
 
-    fun removeInterest(interest: InterestItem) {
-        val localList = interestsList.value?.toMutableList()
-        localList?.let {
-            it.remove(interest)
-            interestsList.value = it
-        }
+    // Get a note from the memory cache
+    fun getMemoryDate(position: Int): DateItem {
+        val date = MemoryDatesList.value?.get(position)
+        Log.d(javaClass.simpleName, "notesList.value ${ExploreDatesList.value}")
+        Log.d(javaClass.simpleName, "getNode $position list len ${ExploreDatesList.value?.size}")
+        return date!!
     }
-
-
-    fun isInterest(albumRec: Data): Boolean {
-        return interestsList.value?.contains(albumRec) ?: false
-    }
-
-    fun removeFav(albumRec: Data) {
-        val localList = interestsList.value?.toMutableList()
-        localList?.let {
-            it.remove(albumRec)
-            interestsList.value = it
-        }
-    }
-
-
-    fun replaceList(newList: List<Data>) {
-        list.value = newList
-    }
+    /////////////////////////////////////////////////////////////
 
     fun getItemCount(): Int {
         return list.value?.size ?: 0
@@ -132,6 +142,75 @@ class UserViewModel : ViewModel() {
         }
         return null
     }
+
+
+    fun createExploreDate() {
+        val date = DateItem(
+            title = "Applebees",
+            description = "description",
+            categories = listOf("food", "drinks"),
+            cost = 1,
+            ratings = 1,
+            thumbnail = "thumbnail",
+        )
+        dbHelp.createDate(date, ExploreDatesList)
+    }
+
+
+
+    private fun addInterestToUserInFirebase(position: Int) {
+        val interest = getInterestListAt(position).name
+        val localList = user.value?.interests?.toMutableList()!!
+        localList.add(interest)
+        user.value!!.interests = localList
+        dbHelp.updateUserInFirebase(user)
+        totalInterestsSelected.postValue(localList.size)
+
+    }
+
+    private fun removeInterestFromUserInFirebase(position: Int) {
+        val interest = getInterestListAt(position).name
+        val localList = user.value?.interests?.toMutableList()!!
+        localList.remove(interest)
+        user.value!!.interests = localList
+        dbHelp.updateUserInFirebase(user)
+        totalInterestsSelected.postValue(localList.size)
+    }
+
+
+    /////////////////////////////////////////////////////////////
+    fun firestoreInit(_auth: FirebaseAuth) {
+        auth = _auth
+        val curUser = auth.currentUser!!
+        user.value = User(
+            curUser.uid,
+            curUser.displayName.toString(),
+            curUser.email.toString(),
+            curUser.photoUrl.toString(),
+             "","", listOf(),
+            "", listOf(),"",""
+        )
+
+        dbHelp.dbFetchUser(user)
+
+
+
+    }
+
+    fun setUpUser() {
+
+        val localList = interestsList.value?.toMutableList()
+        for (interest in user.value!!.interests) {
+            val index = localList?.indexOfFirst {  it.name == interest }
+            if(index==null || index==-1)
+                return
+
+
+            localList[index].selected = !localList[index].selected
+            totalInterestsSelected.postValue( user.value!!.interests.size)
+        }
+    }
+
 
 
 }

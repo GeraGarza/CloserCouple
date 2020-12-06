@@ -60,7 +60,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
 
-//    Google
+    // Google
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
@@ -68,6 +68,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.shobhitpuri.custombuttons:google-signin:1.1.0'
 
+
+    // Firebase stuff
+    implementation 'com.firebaseui:firebase-ui-auth:6.0.2'
+    implementation 'com.firebaseui:firebase-ui-storage:6.0.2'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.google.firebase:firebase-firestore:21.7.0'
 
 }
 

@@ -25,7 +25,7 @@ class AccountFragment : Fragment() {
     private lateinit var profileEmptyIcon: Drawable
     private lateinit var interestsDoneIcon: Drawable
     private lateinit var interestsEmptyIcon: Drawable
-
+    private lateinit var mainAct : MainActivity
     companion object {
         fun newInstance(title: String): AccountFragment {
             val accountFragment = AccountFragment()
@@ -52,13 +52,14 @@ class AccountFragment : Fragment() {
     }
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         account_create_btn.setOnClickListener { clickedIcon(ProfileFragment.newInstance("Profile")) }
         account_account_icon.setOnClickListener { clickedIcon(ProfileFragment.newInstance("Profile")) }
         account_interests_btn.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
         account_interests_icon.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
         account_connect_account.setOnClickListener{ clickedIcon(ConnectAccountFragment.newInstance("Connect Account")) }
+        sign_out_btn.setOnClickListener { mainAct.signOut() }
 
 
         viewModel.observeProfileStatus().observe(viewLifecycleOwner,
@@ -70,9 +71,9 @@ class AccountFragment : Fragment() {
 
             })
 
-        viewModel.observeInterestsStatus().observe(viewLifecycleOwner,
+        viewModel.observeInterestsCount().observe(viewLifecycleOwner,
             {
-                if(it){
+                if(it!=0){
                     account_interests_icon.setImageDrawable(interestsDoneIcon)
                     account_interests_check.setImageDrawable(checkIcon)
                 }else account_interests_icon.setImageDrawable(interestsEmptyIcon)
@@ -97,8 +98,8 @@ class AccountFragment : Fragment() {
             AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_brush_grey)!!
 
 
-        val mainAct = (activity as MainActivity?)
-        mainAct?.supportActionBar?.let {
+        mainAct = (activity as MainActivity)
+        mainAct.supportActionBar?.let {
             val ab = layoutInflater.inflate(R.layout.util_action_bar, container, false)
             mainAct.initActionBar(ab, false)
             ab.actionTitle.text = arguments?.getString("NAME")

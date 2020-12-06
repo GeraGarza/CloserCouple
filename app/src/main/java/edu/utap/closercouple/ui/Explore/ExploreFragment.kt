@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -60,6 +61,14 @@ class ExploreFragment  : Fragment() {
             clickedAddDate(AddDateFragment.newInstance("Add Date"))
         }
         adapter = DateListAdapter(viewModel, DateList.Explore)
+
+
+        viewModel.observeExploreDates().observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
+
+
+
         rv.adapter = adapter
         rv.layoutManager = LinearLayoutManager(context)
         val itemDecor = DividerItemDecoration(rv.context, LinearLayoutManager.VERTICAL)

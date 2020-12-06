@@ -1,104 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:focusable="true"
-    android:clickable="true"
     android:layout_margin="8dp"
-    android:background="?android:attr/selectableItemBackground">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         tools:context=".MainActivity">
-        <ImageView
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/rowPic"
-            android:src="@drawable/ic__09_cake"
+            >
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:maxWidth="120dp"
             android:background="@drawable/ic__09_cake"
-            app:layout_constraintTop_toTopOf="parent"
+            android:maxWidth="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic__09_cake"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageButton
+                android:id="@+id/row_save"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/circular_red_bordersolid"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_add"
+                android:padding="3dp"
+                android:layout_margin="3dp"
+                />
+
+        </FrameLayout>
 
         <LinearLayout
             android:id="@+id/row_info"
             android:layout_width="0dp"
             android:layout_height="150dp"
-            app:layout_constraintStart_toEndOf="@+id/rowPic"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical"
-            >
-        <TextView
-            android:id="@+id/row_title"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:text="Applebee's is an American company which develops, franchises, and operates the Applebee's Neighborhood Grill + Bar restaurant chain."
-            android:layout_marginTop="12dp"
-            android:ellipsize="end"
-            android:gravity="center_horizontal"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rowPic"
+            app:layout_constraintTop_toTopOf="parent">
 
-            />
+
             <TextView
-                android:id="@+id/row_ratings"
-                android:layout_width="wrap_content"
+                android:id="@+id/row_title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:text="Applebee's "
                 android:textColor="@color/black"
-                android:text="O O O O O"
-                android:layout_marginStart="20dp"
-                />
+                android:textSize="16sp" />
 
+
+            <TextView
+                android:id="@+id/row_desc"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:text="Applebee's is an American company which develops, franchises, and operates the Applebee's Neighborhood Grill + Bar restaurant chain."
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                >
-            <TextView
-                android:id="@+id/row_cost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:text="$20"
-                android:layout_marginStart="20dp"
-                />
-                <TextView
-                    android:id="@+id/row_like"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
-                    android:text="Like"
-                    android:gravity="end"
-                    android:layout_marginEnd="20dp"
-
-                    />
-
-        </LinearLayout>
-            <TextView
-                android:id="@+id/row_categories"
+                android:id="@+id/row_date_details"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:text="Categories: FF"
-                android:gravity="bottom"
                 android:layout_marginStart="20dp"
-                />
+                android:layout_marginTop="20dp"
+                android:gravity="bottom"
+                android:visibility="visible"
+                >
 
+                <include layout="@layout/util_rating" />
+                <TextView
+                    android:id="@+id/rating_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2,001"
+                    android:layout_marginStart="2dp"
+                    android:textSize="12sp"
+                    />
+                <TextView
+                    android:id="@+id/row_date_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="bottom|end"
+                    android:text="$20"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -41,11 +41,12 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveUserInfo() {
-        val userInfo = UserViewModel.UserInfo(
-            user_name.text.toString(), user_number.text.toString(),
-            user_location.text.toString(), user_email.text.toString()
-        )
-        viewModel.updateUserInfo(userInfo)
+        val usr_nm = user_name.text.toString()
+        val usr_num = user_number.text.toString()
+        val usr_loc = user_location.text.toString()
+        val usr_em = user_email.text.toString()
+
+        viewModel.updateUserInfo(usr_nm, usr_num , usr_loc, usr_em)
     }
 
 
@@ -58,9 +59,8 @@ class ProfileFragment : Fragment() {
         user_email = activity?.findViewById(R.id.et_user_location) as TextView
 
         val userInfo = viewModel.getUserInfo()
-        name_title.text = userInfo.name
-        user_name.text = userInfo.name
-        user_number.text = userInfo.number
+        name_title.text = userInfo.displayName
+        user_name.text = userInfo.displayName
         user_location.text = userInfo.location
         user_email.text = userInfo.email
 
@@ -87,7 +87,6 @@ class ProfileFragment : Fragment() {
 
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
-
 
         val mainAct = (activity as MainActivity?)
         mainAct?.supportActionBar?.let {

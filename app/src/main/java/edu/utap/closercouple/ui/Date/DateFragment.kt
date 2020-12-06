@@ -3,6 +3,7 @@ package edu.utap.closercouple.ui.main.dates.Date
 import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,11 +61,13 @@ class DateFragment : Fragment() {
             .commit()
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.setUpUser()
 
         date_account_icon.setOnClickListener {
-            accountIconClicked(ProfileFragment.newInstance("Profile"))
+          //  accountIconClicked(ProfileFragment.newInstance("Profile"))
+            viewModel.createExploreDate()
         }
 
         date_interests_icon.setOnClickListener {
@@ -81,9 +84,9 @@ class DateFragment : Fragment() {
                 }
             })
 
-        viewModel.observeInterestsStatus().observe(viewLifecycleOwner,
+        viewModel.observeInterestsCount().observe(viewLifecycleOwner,
             {
-                if(it){
+                if(it!=0){
                     date_interests_icon.setImageDrawable(interestsDoneIcon)
                     date_interests_check.setImageDrawable(checkIcon)
                 }else{
@@ -95,13 +98,13 @@ class DateFragment : Fragment() {
 
 
     //https://stackoverflow.com/questions/10450348/do-fragments-really-need-an-empty-constructor
-    @SuppressLint("SetTextI18n")
-    override fun onCreateView(
+         override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_date, container, false)
+
 
         checkIcon = AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_done)!!
         profileDoneIcon =
@@ -132,10 +135,10 @@ class DateFragment : Fragment() {
         viewModel.observeUserInfo().observe(viewLifecycleOwner,
             {
                 val welcome_text = "Good morning"
-                if(it.name!="")  date_welcome_tv.text = "${welcome_text}, \n${it.name}!"
+                if(it.displayName!="")  date_welcome_tv.text = "${welcome_text}, \n${it.displayName}!"
                 else date_welcome_tv.text = "$welcome_text!"
+                viewModel.setUpUser()
             })
-
 
 
         return view

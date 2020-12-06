@@ -44,16 +44,6 @@ class InterestAdapter(
         private var red =  ContextCompat.getColor(v.context, R.color.active_icon)
 
         init {
-            card.setOnClickListener {
-                val pos = adapterPosition
-                val interest = viewModel.getInterestListAt(pos)
-
-                if (interest.selected) {
-                    viewModel.removeInterest(interest)
-                } else {
-                    viewModel.addInterest(interest)
-                }
-            }
         }
 
         fun bind(pos: Int) {
