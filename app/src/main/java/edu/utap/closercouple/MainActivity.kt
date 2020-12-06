@@ -24,6 +24,7 @@ import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
 import edu.utap.closercouple.ui.main.dates.Memories.MemoriesFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.coroutines.delay
 
 
 class MainActivity : AppCompatActivity() {
@@ -129,7 +130,6 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        println(currentUser?.email)
         if (currentUser!=null){
             landing_page.visibility = View.GONE
             bottom_nav.visibility = View.VISIBLE
@@ -151,6 +151,7 @@ class MainActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
 
             if (task.isSuccessful) {
+
                 val acct = task.result!!
                 firebaseAuthWithGoogle(acct.idToken!!)
                 landing_page.visibility = View.GONE

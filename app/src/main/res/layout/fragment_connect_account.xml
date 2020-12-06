@@ -52,7 +52,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:padding="12dp"
-                    android:text="Your username: Gera_"
+                    android:text="Your username: "
                     android:textAlignment="textStart"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/black"

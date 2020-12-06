@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.Model.DateItem
 import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_create_date.*
@@ -52,7 +53,37 @@ class AddDateFragment : Fragment() {
         }
 
         done_create_date_btn.setOnClickListener {
-            viewModel.createExploreDate()
+            var cats: MutableList<String> = mutableListOf()
+
+            var checked = create_date_food.isChecked
+            if (checked){
+                cats.add("Food")
+            }
+            checked = create_date_drink.isChecked
+            if (checked){
+                cats.add("Drink")
+            }
+            checked = create_date_outdoor.isChecked
+            if (checked){
+                cats.add("Outdoors")
+            }
+
+            val date = DateItem(
+                title = et_create_date_place.text.toString(),
+                description = et_create_date_duration.text.toString(),
+                categories = cats.toList(),
+                cost = 2,
+                ratings = 1,
+                thumbnail = et_create_date_picture.text.toString(),
+            )
+
+
+            viewModel.createExploreDate(date)
+            if (fm.backStackEntryCount > 0) {
+                fm.popBackStackImmediate()
+                val parent = fm.fragments.last() as ExploreFragment
+                parent.onResume()
+            }
         }
     }
 

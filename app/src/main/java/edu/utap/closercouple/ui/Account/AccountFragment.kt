@@ -59,7 +59,9 @@ class AccountFragment : Fragment() {
         account_interests_btn.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
         account_interests_icon.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
         account_connect_account.setOnClickListener{ clickedIcon(ConnectAccountFragment.newInstance("Connect Account")) }
-        sign_out_btn.setOnClickListener { mainAct.signOut() }
+        sign_out_btn.setOnClickListener {
+            mainAct.signOut()
+        }
 
 
         viewModel.observeProfileStatus().observe(viewLifecycleOwner,

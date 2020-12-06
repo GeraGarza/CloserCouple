@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import edu.utap.closercouple.Data
 import edu.utap.closercouple.Repository
 import edu.utap.closercouple.ui.Model.DateItem
@@ -17,8 +18,14 @@ import edu.utap.closercouple.ui.Model.User
 class UserViewModel : ViewModel() {
     private var repository = Repository()
     private var ExploreDatesList = MutableLiveData<List<DateItem>>()
-    private var MemoryDatesList = MutableLiveData<List<DateItem>>()
+    private var MemoryDatesList = MutableLiveData<List<DateItem>>().apply {
+        value = listOf( DateItem( "Movie Night","Watch a new movie together ",
+            listOf("Entertainment"), 1, 1,
+            "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1055293068%2F0x0.jpg%3FcropX1%3D0%26cropX2%3D6720%26cropY1%3D0%26cropY2%3D4480",
+        ))
+    }
     private var totalInterestsSelected = MutableLiveData<Int>()
+    private var userAuth = MutableLiveData<FirebaseUser>()
 
     private val dbHelp = ViewModelDBHelper(ExploreDatesList, MemoryDatesList)
     private lateinit var auth: FirebaseAuth
@@ -43,12 +50,16 @@ class UserViewModel : ViewModel() {
 
 
 
-    fun updateUserInfo(userName: String, userNum: String, usrLoc: String, usrEm: String) {
-        user.value?.displayName = userName
-        user.value?.location = usrLoc
+    fun updateUserInfo(usr: User) {
+        user.value = usr
         completedProfile.value = true
+        println(user.value!!.displayName)
+        dbHelp.updateUserInFirebase(user)
     }
 
+    fun observeUserAuth(): LiveData<FirebaseUser>{
+        return userAuth
+    }
 
 
     fun observeExploreDates(): LiveData<List<DateItem>> {
@@ -73,6 +84,10 @@ class UserViewModel : ViewModel() {
 
     fun getUserInfo(): User {
         return user.value!!
+    }
+
+    fun getUsername(): String {
+        return user.value!!.username
     }
 
 
@@ -109,8 +124,6 @@ class UserViewModel : ViewModel() {
     // Get a note from the memory cache
     fun getExploreDate(position: Int): DateItem {
         val date = ExploreDatesList.value?.get(position)
-        Log.d(javaClass.simpleName, "notesList.value ${ExploreDatesList.value}")
-        Log.d(javaClass.simpleName, "getNode $position list len ${ExploreDatesList.value?.size}")
         return date!!
     }
     /////////////////////////////////////////////////////////////
@@ -124,8 +137,6 @@ class UserViewModel : ViewModel() {
     // Get a note from the memory cache
     fun getMemoryDate(position: Int): DateItem {
         val date = MemoryDatesList.value?.get(position)
-        Log.d(javaClass.simpleName, "notesList.value ${ExploreDatesList.value}")
-        Log.d(javaClass.simpleName, "getNode $position list len ${ExploreDatesList.value?.size}")
         return date!!
     }
     /////////////////////////////////////////////////////////////
@@ -144,8 +155,8 @@ class UserViewModel : ViewModel() {
     }
 
 
-    fun createExploreDate() {
-        val date = DateItem(
+    fun createExploreDate(dt : DateItem) {
+        var date = DateItem(
             title = "Applebees",
             description = "description",
             categories = listOf("food", "drinks"),
@@ -153,6 +164,7 @@ class UserViewModel : ViewModel() {
             ratings = 1,
             thumbnail = "thumbnail",
         )
+        if(dt.title!="")date = dt
         dbHelp.createDate(date, ExploreDatesList)
     }
 
@@ -178,28 +190,21 @@ class UserViewModel : ViewModel() {
     }
 
 
+    fun addUserPartnerInFirebase(){
+        dbHelp.addUserPartnerInFirebase(user,  "Joe")
+    }
+
+
     /////////////////////////////////////////////////////////////
     fun firestoreInit(_auth: FirebaseAuth) {
         auth = _auth
-        val curUser = auth.currentUser!!
-        val uid = curUser.uid
-        val displayName =  curUser.displayName.toString()
-        val username = ""
-        val email = curUser.email.toString()
-        val photoUrl = curUser.photoUrl.toString()
-        val location = ""
-        val interests = listOf<String>()
-        val userDBID = ""
-        val userDatesIDs = listOf<String>()
-        val partnersName = ""
-        val partnersID = ""
-        user.value = User(uid,displayName,username,email,photoUrl,location,interests,userDBID,userDatesIDs ,partnersName,partnersID)
+        if(auth.currentUser != null)
+            userAuth.postValue(auth.currentUser!!)
 
-        dbHelp.dbFetchUser(user)
-
-
-
+        //dbHelp.addUserPartnerToUserInFirebase(user)
     }
+
+
 
     fun setUpUser() {
 
@@ -209,10 +214,15 @@ class UserViewModel : ViewModel() {
             if(index==null || index==-1)
                 return
 
-
             localList[index].selected = !localList[index].selected
             totalInterestsSelected.postValue( user.value!!.interests.size)
         }
+    }
+
+    fun logOutUser() {
+
+        // clear/re-setup user on log out
+        user.value = User("", "", "", "", "", "", listOf(), "", listOf(), "", "")
     }
 
 

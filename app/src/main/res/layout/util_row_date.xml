@@ -23,13 +23,12 @@
             android:id="@+id/rowPic"
             >
         <ImageView
+            android:id="@+id/row_date_img"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
             android:adjustViewBounds="true"
-            android:background="@drawable/ic__09_cake"
             android:maxWidth="120dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic__09_cake"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -77,7 +76,6 @@
                 android:layout_height="60dp"
                 android:ellipsize="end"
                 android:gravity="center_horizontal"
-                android:text="Applebee's is an American company which develops, franchises, and operates the Applebee's Neighborhood Grill + Bar restaurant chain."
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:layout_marginEnd="20dp"

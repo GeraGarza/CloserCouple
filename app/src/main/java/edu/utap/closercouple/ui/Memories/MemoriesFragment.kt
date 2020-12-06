@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +41,11 @@ class MemoriesFragment  : Fragment() {
         val rv = root.findViewById<RecyclerView>(R.id.recyclerView)
         val rv_search = root.findViewById<LinearLayout>(R.id.rv_search)
         val add_date_btn = root.findViewById<Button>(R.id.add_date_btn)
+
+        viewModel.observeMemoryDates().observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
+
 
         adapter = DateListAdapter(viewModel, DateList.Memories)
         rv.adapter = adapter

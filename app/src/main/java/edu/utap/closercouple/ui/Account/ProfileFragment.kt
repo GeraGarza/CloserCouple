@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import edu.utap.closercouple.Glide
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
+import edu.utap.closercouple.ui.Model.User
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_date.*
@@ -23,11 +24,7 @@ import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
 class ProfileFragment : Fragment() {
 
     private val viewModel: UserViewModel by activityViewModels()
-    private lateinit var name_title: TextView
-    private lateinit var user_name: TextView
-    private lateinit var user_number: TextView
-    private lateinit var user_location: TextView
-    private lateinit var user_email: TextView
+
 
 
     companion object {
@@ -43,30 +40,21 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveUserInfo() {
-        val usr_nm = user_name.text.toString()
-        val usr_num = user_number.text.toString()
-        val usr_loc = user_location.text.toString()
-        val usr_em = user_email.text.toString()
 
-        viewModel.updateUserInfo(usr_nm, usr_num , usr_loc, usr_em)
+        val dn = et_display_name.text.toString()
+        if(dn=="")
+            return
+
+        val user = viewModel.getUserInfo()
+        val usr = User(user.uid ,dn, user.username ,user.email ,user.photoUrl ,
+            user.location ,user.interests ,user.userDBID ,user.userDatesIDs ,user.partnersUsername ,user.partnerID )
+
+        viewModel.updateUserInfo(usr)
     }
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        name_title = activity?.findViewById(R.id.profile_name_title) as TextView
-        user_name = activity?.findViewById(R.id.et_user_name) as TextView
-        user_number = activity?.findViewById(R.id.et_partners_name) as TextView
-        user_location = activity?.findViewById(R.id.et_user_email) as TextView
-        user_email = activity?.findViewById(R.id.et_user_location) as TextView
-
-        val userInfo = viewModel.getUserInfo()
-        name_title.text = userInfo.displayName
-        user_name.text = userInfo.displayName
-        user_location.text = userInfo.location
-        user_email.text = userInfo.email
-
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
         val textView = activity?.findViewById(R.id.save_btn) as TextView
@@ -112,6 +100,14 @@ class ProfileFragment : Fragment() {
         viewModel.observeUserInfo().observe(viewLifecycleOwner,
             {
                 Glide.glideFetch(it.photoUrl,it.photoUrl,profil_pic)
+
+                et_display_name.setText(it.displayName)
+                et_user_name.setText(it.username)
+                et_partners_name.setText(it.partnersUsername)
+                et_user_email.setText(it.email)
+                et_user_location.setText(it.location)
+                profile_name_title.setText(it.displayName)
+
             })
 
 

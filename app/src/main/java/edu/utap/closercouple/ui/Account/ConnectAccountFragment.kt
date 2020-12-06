@@ -1,5 +1,6 @@
 package edu.utap.closercouple.ui.Account
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +34,7 @@ class ConnectAccountFragment : Fragment() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,8 +42,12 @@ class ConnectAccountFragment : Fragment() {
         val save_btn = requireActivity().findViewById<TextView>(R.id.save_btn)
         save_btn.visibility = View.GONE
 
+        connect_your_username.text =  "Your username: ${viewModel.getUsername()}"
+
         connect_partner_btn.setOnClickListener {
             if (fm.backStackEntryCount > 0) {
+                viewModel.addUserPartnerInFirebase()
+
                 fm.popBackStackImmediate()
                 val parent = fm.fragments.last() as AccountFragment
                 parent.onResume()

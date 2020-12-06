@@ -16,6 +16,7 @@ import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.Account.InterestFragment
+import edu.utap.closercouple.ui.Model.User
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_date.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
@@ -73,6 +74,33 @@ class DateFragment : Fragment() {
         date_interests_icon.setOnClickListener {
             accountIconClicked(InterestFragment.newInstance("Interests"))
         }
+
+
+
+        // start up user once auth complete
+        viewModel.observeUserAuth().observe(viewLifecycleOwner,
+            {
+
+                if(viewModel.getUsername() != "")
+                    return@observe
+
+                val uid = it.uid
+                val displayName =  it.displayName.toString()
+                val username = it.displayName.toString()
+                val email = it.email.toString()
+                val photoUrl = it.photoUrl.toString()
+                val location = ""
+                val interests = listOf<String>()
+                val userDBID = ""
+                val userDatesIDs = listOf<String>()
+                val partnersUsername = ""
+                val partnersID = ""
+                var usr = User(uid,displayName,username,email,photoUrl,location,interests,userDBID,userDatesIDs ,partnersUsername,partnersID)
+                viewModel.updateUserInfo(usr)
+                viewModel.setUpUser()
+            })
+
+
 
         viewModel.observeProfileStatus().observe(viewLifecycleOwner,
             {
@@ -137,7 +165,7 @@ class DateFragment : Fragment() {
                 val welcome_text = "Good morning"
                 if(it.displayName!="")  date_welcome_tv.text = "${welcome_text}, \n${it.displayName}!"
                 else date_welcome_tv.text = "$welcome_text!"
-                viewModel.setUpUser()
+
             })
 
 

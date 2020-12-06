@@ -10,6 +10,6 @@ data class User(
     var interests: List<String> = listOf(),
     var userDBID:String="",
     var userDatesIDs: List<String> = listOf( "GVPpVJ363sJ9yJfzzvtz"),
-    var partnersName: String = "",
+    var partnersUsername: String = "",
     var partnerID: String = ""
 )
