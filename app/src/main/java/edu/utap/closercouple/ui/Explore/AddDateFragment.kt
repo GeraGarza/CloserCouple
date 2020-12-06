@@ -14,6 +14,7 @@ import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
+import kotlinx.android.synthetic.main.fragment_create_date.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
 
 class AddDateFragment : Fragment() {
@@ -33,8 +34,8 @@ class AddDateFragment : Fragment() {
 
 
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val textView = activity?.findViewById(R.id.done_create_date_btn) as Button
 
@@ -48,6 +49,10 @@ class AddDateFragment : Fragment() {
                 val parent = fm.fragments.last() as ExploreFragment
                 parent.onResume()
             }
+        }
+
+        done_create_date_btn.setOnClickListener {
+            viewModel.createExploreDate()
         }
     }
 

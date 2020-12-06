@@ -182,14 +182,18 @@ class UserViewModel : ViewModel() {
     fun firestoreInit(_auth: FirebaseAuth) {
         auth = _auth
         val curUser = auth.currentUser!!
-        user.value = User(
-            curUser.uid,
-            curUser.displayName.toString(),
-            curUser.email.toString(),
-            curUser.photoUrl.toString(),
-             "","", listOf(),
-            "", listOf(),"",""
-        )
+        val uid = curUser.uid
+        val displayName =  curUser.displayName.toString()
+        val username = ""
+        val email = curUser.email.toString()
+        val photoUrl = curUser.photoUrl.toString()
+        val location = ""
+        val interests = listOf<String>()
+        val userDBID = ""
+        val userDatesIDs = listOf<String>()
+        val partnersName = ""
+        val partnersID = ""
+        user.value = User(uid,displayName,username,email,photoUrl,location,interests,userDBID,userDatesIDs ,partnersName,partnersID)
 
         dbHelp.dbFetchUser(user)
 

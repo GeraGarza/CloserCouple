@@ -9,10 +9,12 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import edu.utap.closercouple.Glide
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
+import kotlinx.android.synthetic.main.fragment_date.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
@@ -65,6 +67,8 @@ class ProfileFragment : Fragment() {
         user_email.text = userInfo.email
 
 
+
+
         val textView = activity?.findViewById(R.id.save_btn) as TextView
         val fm = requireActivity().supportFragmentManager
 
@@ -104,6 +108,13 @@ class ProfileFragment : Fragment() {
                 fm.popBackStackImmediate()
             }
         }
+
+        viewModel.observeUserInfo().observe(viewLifecycleOwner,
+            {
+                Glide.glideFetch(it.photoUrl,it.photoUrl,profil_pic)
+            })
+
+
 
 
         return view

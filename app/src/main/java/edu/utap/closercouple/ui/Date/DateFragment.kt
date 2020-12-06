@@ -66,8 +66,8 @@ class DateFragment : Fragment() {
         viewModel.setUpUser()
 
         date_account_icon.setOnClickListener {
-          //  accountIconClicked(ProfileFragment.newInstance("Profile"))
-            viewModel.createExploreDate()
+            accountIconClicked(ProfileFragment.newInstance("Profile"))
+
         }
 
         date_interests_icon.setOnClickListener {
