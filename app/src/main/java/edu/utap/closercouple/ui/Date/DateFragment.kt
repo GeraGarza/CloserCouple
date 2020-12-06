@@ -16,6 +16,7 @@ import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.Account.InterestFragment
+import edu.utap.closercouple.ui.Intro.IntroFragment
 import edu.utap.closercouple.ui.Model.User
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_date.*
@@ -56,7 +57,6 @@ class DateFragment : Fragment() {
                 R.anim.exit_to_right
             )
             .replace(R.id.main_frame, AccountFragment.newInstance("Account"))
-
             .replace(R.id.main_frame, frag)
             .addToBackStack(null)
             .commit()
@@ -64,6 +64,20 @@ class DateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        viewModel.observeNewUser().observe(viewLifecycleOwner,
+            {
+
+                if(it) {
+                    requireActivity().supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_frame, IntroFragment.newInstance())
+                        .commit()
+                }
+            })
+
+
         viewModel.setUpUser()
 
         date_account_icon.setOnClickListener {
@@ -74,6 +88,8 @@ class DateFragment : Fragment() {
         date_interests_icon.setOnClickListener {
             accountIconClicked(InterestFragment.newInstance("Interests"))
         }
+
+
 
 
 
@@ -145,6 +161,7 @@ class DateFragment : Fragment() {
             AppCompatResources.getDrawable(requireContext(), R.drawable.icon_profle_brush_grey)!!
 
 
+
         requireActivity().supportFragmentManager
             .beginTransaction()
             .replace(R.id.date_frame, DateCardFragment.newInstance("Card"))
@@ -165,6 +182,8 @@ class DateFragment : Fragment() {
                 val welcome_text = "Good morning"
                 if(it.displayName!="")  date_welcome_tv.text = "${welcome_text}, \n${it.displayName}!"
                 else date_welcome_tv.text = "$welcome_text!"
+                if(it.uid!="")
+                    viewModel.updateUserInFirebase()
 
             })
 

@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.utap.closercouple.MainActivity
 import edu.utap.closercouple.R
 import edu.utap.closercouple.ui.Account.ConnectAccountFragment
 import edu.utap.closercouple.ui.Account.InterestFragment
 import edu.utap.closercouple.ui.main.dates.Account.ProfileFragment
+import edu.utap.closercouple.ui.main.dates.Date.DateFragment
 import edu.utap.closercouple.ui.main.dates.UserViewModel
 import kotlinx.android.synthetic.main.fragment_account.*
 import kotlinx.android.synthetic.main.util_action_bar_icon.view.*
@@ -60,7 +62,18 @@ class AccountFragment : Fragment() {
         account_interests_icon.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
         account_connect_account.setOnClickListener{ clickedIcon(ConnectAccountFragment.newInstance("Connect Account")) }
         sign_out_btn.setOnClickListener {
+
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.main_frame, DateFragment.newInstance("Date"))
+                .commit()
+
+            val navView = activity?.findViewById<BottomNavigationView>(R.id.bottom_nav)
+            navView?.selectedItemId = R.id.navigation_dates;
+
             mainAct.signOut()
+            viewModel.logOutUser()
+
         }
 
 

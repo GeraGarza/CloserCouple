@@ -24,10 +24,15 @@ class UserViewModel : ViewModel() {
             "https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1055293068%2F0x0.jpg%3FcropX1%3D0%26cropX2%3D6720%26cropY1%3D0%26cropY2%3D4480",
         ))
     }
+
+
+
     private var totalInterestsSelected = MutableLiveData<Int>()
     private var userAuth = MutableLiveData<FirebaseUser>()
+    private var newUser = MutableLiveData<Boolean>().apply { value = false }
 
-    private val dbHelp = ViewModelDBHelper(ExploreDatesList, MemoryDatesList)
+
+    private val dbHelp = ViewModelDBHelper(ExploreDatesList, MemoryDatesList, newUser)
     private lateinit var auth: FirebaseAuth
     private var list = MutableLiveData<List<Data>>().apply {
         value = repository.fetchData()
@@ -50,17 +55,23 @@ class UserViewModel : ViewModel() {
 
 
 
+
+
     fun updateUserInfo(usr: User) {
         user.value = usr
         completedProfile.value = true
         println(user.value!!.displayName)
         dbHelp.updateUserInFirebase(user)
+        dbHelp.dbFetchUser(user)
+    }
+
+    fun observeNewUser(): LiveData<Boolean>{
+        return newUser
     }
 
     fun observeUserAuth(): LiveData<FirebaseUser>{
         return userAuth
     }
-
 
     fun observeExploreDates(): LiveData<List<DateItem>> {
         return ExploreDatesList
@@ -87,6 +98,7 @@ class UserViewModel : ViewModel() {
     }
 
     fun getUsername(): String {
+
         return user.value!!.username
     }
 
@@ -201,13 +213,19 @@ class UserViewModel : ViewModel() {
         if(auth.currentUser != null)
             userAuth.postValue(auth.currentUser!!)
 
+
         //dbHelp.addUserPartnerToUserInFirebase(user)
     }
 
 
+    fun updateUserInFirebase(){
+
+        dbHelp.updateUserInFirebase(user)
+
+    }
+
 
     fun setUpUser() {
-
         val localList = interestsList.value?.toMutableList()
         for (interest in user.value!!.interests) {
             val index = localList?.indexOfFirst {  it.name == interest }
@@ -217,12 +235,13 @@ class UserViewModel : ViewModel() {
             localList[index].selected = !localList[index].selected
             totalInterestsSelected.postValue( user.value!!.interests.size)
         }
+
     }
 
     fun logOutUser() {
 
         // clear/re-setup user on log out
-        user.value = User("", "", "", "", "", "", listOf(), "", listOf(), "", "")
+       // userAuth.postValue(null)
     }
 
 

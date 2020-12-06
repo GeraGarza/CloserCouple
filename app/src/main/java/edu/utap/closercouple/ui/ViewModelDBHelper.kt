@@ -1,6 +1,7 @@
 package edu.utap.closercouple.ui
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
@@ -11,14 +12,19 @@ import edu.utap.closercouple.ui.Model.User
 
 class ViewModelDBHelper(
     ExploreDatesList: MutableLiveData<List<DateItem>>,
-    MemoryDatesList: MutableLiveData<List<DateItem>>
+    MemoryDatesList: MutableLiveData<List<DateItem>>,
+    newUser: MutableLiveData<Boolean>
 ) {
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val newUser = newUser
 
     init {
         dbFetchDates(ExploreDatesList)
         //dbFetchDates(MemoryDatesList)
     }
+
+
+
 
     private fun elipsizeString(string: String): String {
         if (string.length < 10)
@@ -91,6 +97,7 @@ class ViewModelDBHelper(
                 if (result.data == null) {
                     println("NO User")
                     addUserToFirebase(user)
+                    newUser.postValue(true)
                     return@addOnSuccessListener
                 }
 

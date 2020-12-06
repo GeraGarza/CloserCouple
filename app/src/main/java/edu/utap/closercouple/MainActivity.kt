@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         sign_in_btn.setOnClickListener { signIn() }
         auth = Firebase.auth
+        viewModel.firestoreInit(auth)
 
 
         mSignInClient = GoogleSignIn.getClient(this, gso);
@@ -133,7 +134,6 @@ class MainActivity : AppCompatActivity() {
         if (currentUser!=null){
             landing_page.visibility = View.GONE
             bottom_nav.visibility = View.VISIBLE
-            viewModel.firestoreInit(auth)
         }
     }
 
@@ -157,6 +157,7 @@ class MainActivity : AppCompatActivity() {
                 landing_page.visibility = View.GONE
                 bottom_nav.visibility = View.VISIBLE
                 viewModel.firestoreInit(auth)
+
 
             } else {
                 println("signInWithCredential:failure")
