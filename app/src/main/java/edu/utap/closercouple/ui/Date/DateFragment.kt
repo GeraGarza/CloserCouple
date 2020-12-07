@@ -66,16 +66,6 @@ class DateFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewModel.observeNewUser().observe(viewLifecycleOwner,
-            {
-
-                if(it) {
-                    requireActivity().supportFragmentManager
-                        .beginTransaction()
-                        .replace(R.id.main_frame, IntroFragment.newInstance())
-                        .commit()
-                }
-            })
 
 
         viewModel.setUpUser()
@@ -88,7 +78,6 @@ class DateFragment : Fragment() {
         date_interests_icon.setOnClickListener {
             accountIconClicked(InterestFragment.newInstance("Interests"))
         }
-
 
 
 
@@ -182,8 +171,8 @@ class DateFragment : Fragment() {
                 val welcome_text = "Good morning"
                 if(it.displayName!="")  date_welcome_tv.text = "${welcome_text}, \n${it.displayName}!"
                 else date_welcome_tv.text = "$welcome_text!"
-                if(it.uid!="")
-                    viewModel.updateUserInFirebase()
+//                if(it.uid!="")
+//                    viewModel.updateUserInFirebase()
 
             })
 

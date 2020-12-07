@@ -46,7 +46,9 @@ class ConnectAccountFragment : Fragment() {
 
         connect_partner_btn.setOnClickListener {
             if (fm.backStackEntryCount > 0) {
-                viewModel.addUserPartnerInFirebase()
+
+
+                viewModel.addUserPartnerInFirebase(et_user_connect.text.toString())
 
                 fm.popBackStackImmediate()
                 val parent = fm.fragments.last() as AccountFragment

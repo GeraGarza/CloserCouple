@@ -202,8 +202,8 @@ class UserViewModel : ViewModel() {
     }
 
 
-    fun addUserPartnerInFirebase(){
-        dbHelp.addUserPartnerInFirebase(user,  "Joe")
+    fun addUserPartnerInFirebase(us : String){
+        dbHelp.addUserPartnerInFirebase(user,  us)
     }
 
 

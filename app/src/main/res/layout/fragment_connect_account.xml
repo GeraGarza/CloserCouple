@@ -67,7 +67,7 @@
                     >
 
                     <EditText
-                        android:id="@+id/et_user_number"
+                        android:id="@+id/et_user_connect"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"

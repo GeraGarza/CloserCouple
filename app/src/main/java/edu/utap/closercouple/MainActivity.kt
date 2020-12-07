@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import edu.utap.closercouple.ui.Intro.IntroFragment
 import edu.utap.closercouple.ui.main.dates.Date.DateFragment
 import edu.utap.closercouple.ui.main.dates.Explore.AccountFragment
 import edu.utap.closercouple.ui.main.dates.Explore.ExploreFragment
@@ -122,7 +123,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.main_frame, DateFragment.newInstance("Date"))
+            .replace(R.id.main_frame, IntroFragment.newInstance())
             .commit()
 
     }
@@ -131,6 +132,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
+
         if (currentUser!=null){
             landing_page.visibility = View.GONE
             bottom_nav.visibility = View.VISIBLE

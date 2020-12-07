@@ -27,7 +27,8 @@ class AccountFragment : Fragment() {
     private lateinit var profileEmptyIcon: Drawable
     private lateinit var interestsDoneIcon: Drawable
     private lateinit var interestsEmptyIcon: Drawable
-    private lateinit var mainAct : MainActivity
+    private lateinit var mainAct: MainActivity
+
     companion object {
         fun newInstance(title: String): AccountFragment {
             val accountFragment = AccountFragment()
@@ -60,7 +61,13 @@ class AccountFragment : Fragment() {
         account_account_icon.setOnClickListener { clickedIcon(ProfileFragment.newInstance("Profile")) }
         account_interests_btn.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
         account_interests_icon.setOnClickListener { clickedIcon(InterestFragment.newInstance("Interests")) }
-        account_connect_account.setOnClickListener{ clickedIcon(ConnectAccountFragment.newInstance("Connect Account")) }
+        account_connect_account.setOnClickListener {
+            clickedIcon(
+                ConnectAccountFragment.newInstance(
+                    "Connect Account"
+                )
+            )
+        }
         sign_out_btn.setOnClickListener {
 
             requireActivity().supportFragmentManager
@@ -79,19 +86,19 @@ class AccountFragment : Fragment() {
 
         viewModel.observeProfileStatus().observe(viewLifecycleOwner,
             {
-                if(it){
+                if (it) {
                     account_account_icon.setImageDrawable(profileDoneIcon);
                     account_account_check.setImageDrawable(checkIcon)
-                }else account_account_icon.setImageDrawable(profileEmptyIcon);
+                } else account_account_icon.setImageDrawable(profileEmptyIcon);
 
             })
 
         viewModel.observeInterestsCount().observe(viewLifecycleOwner,
             {
-                if(it!=0){
+                if (it != 0) {
                     account_interests_icon.setImageDrawable(interestsDoneIcon)
                     account_interests_check.setImageDrawable(checkIcon)
-                }else account_interests_icon.setImageDrawable(interestsEmptyIcon)
+                } else account_interests_icon.setImageDrawable(interestsEmptyIcon)
 
             })
     }
