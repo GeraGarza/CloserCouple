@@ -44,7 +44,6 @@
                     android:padding="16dp">
 
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -55,36 +54,33 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
                             android:gravity="center_vertical"
                             android:orientation="vertical"
-                            android:paddingRight="8dp"
-                            android:layout_marginBottom="12dp"
-                            >
+                            android:paddingRight="8dp">
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Place"
-                                 />
+                                android:text="Place" />
 
                             <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/circular_grey_edit_text"
                                 android:layout_margin="3dp"
-                                >
+                                android:background="@drawable/circular_grey_edit_text">
+
                                 <EditText
                                     android:id="@+id/et_create_date_place"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
-                                    android:textSize="15sp"
-                                    android:textColor="@color/goodgrey"
+                                    android:background="@null"
                                     android:fontFamily="@font/proximanovaregular"
                                     android:hint="Place"
-                                    android:background="@null"
                                     android:padding="10dp"
-                                    />
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
                             </FrameLayout>
                         </LinearLayout>
 
@@ -92,10 +88,10 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
                             android:gravity="center_vertical"
                             android:orientation="vertical"
                             android:paddingRight="8dp"
-                            android:layout_marginBottom="12dp"
 
                             >
 
@@ -103,36 +99,34 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Estimated Duration"
-                                />
+                                android:text="Estimated Duration" />
 
                             <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/circular_grey_edit_text"
                                 android:layout_margin="3dp"
-                                >
+                                android:background="@drawable/circular_grey_edit_text">
+
                                 <EditText
                                     android:id="@+id/et_create_date_duration"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
-                                    android:textSize="15sp"
-                                    android:textColor="@color/goodgrey"
+                                    android:background="@null"
                                     android:fontFamily="@font/proximanovaregular"
                                     android:hint="Duration"
-                                    android:background="@null"
                                     android:padding="10dp"
-                                    />
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
                             </FrameLayout>
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
                             android:gravity="center_vertical"
                             android:orientation="vertical"
                             android:paddingRight="8dp"
-                            android:layout_marginBottom="12dp"
 
                             >
 
@@ -140,36 +134,34 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Cost"
-                                />
+                                android:text="Cost" />
 
                             <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/circular_grey_edit_text"
                                 android:layout_margin="3dp"
-                                >
+                                android:background="@drawable/circular_grey_edit_text">
+
                                 <EditText
                                     android:id="@+id/et_create_date_cost"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
-                                    android:textSize="15sp"
-                                    android:textColor="@color/goodgrey"
+                                    android:background="@null"
                                     android:fontFamily="@font/proximanovaregular"
                                     android:hint="Cost"
-                                    android:background="@null"
                                     android:padding="10dp"
-                                    />
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
                             </FrameLayout>
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
                             android:gravity="center_vertical"
                             android:orientation="vertical"
                             android:paddingRight="8dp"
-                            android:layout_marginBottom="12dp"
 
                             >
 
@@ -177,46 +169,42 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="10dp"
-                                android:text="Picture"
-                                />
+                                android:text="Picture" />
 
                             <FrameLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/circular_grey_edit_text"
                                 android:layout_margin="3dp"
-                                >
+                                android:background="@drawable/circular_grey_edit_text">
+
                                 <EditText
                                     android:id="@+id/et_create_date_picture"
                                     android:layout_width="260dp"
                                     android:layout_height="match_parent"
-                                    android:textSize="15sp"
-                                    android:textColor="@color/goodgrey"
+                                    android:background="@null"
                                     android:fontFamily="@font/proximanovaregular"
                                     android:hint="Picture"
-                                    android:background="@null"
                                     android:padding="10dp"
-                                    />
+                                    android:textColor="@color/goodgrey"
+                                    android:textSize="15sp" />
                             </FrameLayout>
 
 
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical"
-                            android:paddingRight="8dp"
-                            android:layout_marginBottom="12dp"
-
-                            >
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:paddingStart="10dp"
-                                android:text="Category"
-                                />
+                                android:layout_marginBottom="12dp"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingRight="8dp"
+
+                                >
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="10dp"
+                                    android:text="Category" />
 
 
                                 <CheckBox
@@ -224,11 +212,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Food" />
+
                                 <CheckBox
                                     android:id="@+id/create_date_drink"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Drinks" />
+
                                 <CheckBox
                                     android:id="@+id/create_date_outdoor"
                                     android:layout_width="wrap_content"
@@ -236,13 +226,12 @@
                                     android:text="Outdoors" />
 
 
-                        </LinearLayout>
+                            </LinearLayout>
 
                         </LinearLayout>
 
                     </LinearLayout>
                 </LinearLayout>
-
 
 
             </LinearLayout>
@@ -252,8 +241,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Done"
-                android:textColor="@color/black"
                 android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/black"
                 android:theme="@style/ButtonStyleTextColor"
 
                 />

@@ -16,13 +16,13 @@
 
     <item
         android:id="@+id/navigation_memories"
+        android:color="@color/active_icon"
         android:icon="@drawable/selector_memories_tab"
-        android:title="@string/memories"
-        android:color="@color/active_icon" />
+        android:title="@string/memories" />
 
     <item
-        android:icon="@drawable/selector_account_tab"
         android:id="@+id/navigation_account"
+        android:icon="@drawable/selector_account_tab"
         android:title="@string/account" />
 
 </menu>

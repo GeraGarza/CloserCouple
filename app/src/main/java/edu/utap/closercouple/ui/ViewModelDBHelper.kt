@@ -24,8 +24,6 @@ class ViewModelDBHelper(
     }
 
 
-
-
     private fun elipsizeString(string: String): String {
         if (string.length < 10)
             return string
@@ -112,7 +110,6 @@ class ViewModelDBHelper(
     }
 
 
-
     fun createDate(
         dateItem: DateItem,
         dateList: MutableLiveData<List<DateItem>>
@@ -124,21 +121,12 @@ class ViewModelDBHelper(
             .document(dateItem.dateID)
             .set(dateItem)
             .addOnSuccessListener {
-                Log.d(
-                    javaClass.simpleName,
-                    "Note create \"${elipsizeString(dateItem.title)}\" id: ${dateItem.dateID}"
-                )
                 dbFetchDates(dateList)
             }
             .addOnFailureListener { e ->
-                Log.d(
-                    javaClass.simpleName,
-                    "Note create FAILED \"${elipsizeString(dateItem.title)}\""
-                )
-                Log.w(javaClass.simpleName, "Error ", e)
+                Log.w(javaClass.simpleName, "Error Creating date", e)
             }
     }
-
 
 
     fun addUserToFirebase(user: MutableLiveData<User>) {
@@ -182,7 +170,6 @@ class ViewModelDBHelper(
 
         db
             .collection("globalUsers")
-            .limit(10)
             .get()
             .addOnSuccessListener { result ->
                 result.documents.forEach { curDoc ->
